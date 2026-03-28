@@ -6,597 +6,428 @@
 <title>沖縄旅行 2025.5.6-10</title>
 <style>
 :root{
-  --day1:#f97316;--day1-bg:#fff7ed;
-  --day2:#0ea5e9;--day2-bg:#f0f9ff;
-  --day3:#22c55e;--day3-bg:#f0fdf4;
-  --day4:#ec4899;--day4-bg:#fdf2f8;
-  --day5:#64748b;--day5-bg:#f8fafc;
-  --bg:#f5f0e8;--card:#fff;--text:#1e293b;--text-light:#64748b;
-  --sel-bg:#dbeafe;--sel-border:#3b82f6;
+  --day1:#f97316;--day2:#0ea5e9;--day3:#22c55e;--day4:#ec4899;--day5:#64748b;
+  --bg:#f5f0e8;--card:#fff;--text:#1e293b;--mute:#64748b;
+  --sel-bg:#dbeafe;--sel-bd:#3b82f6;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
-  background:var(--bg);color:var(--text);line-height:1.7;
-  -webkit-tap-highlight-color:transparent;
-}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-tap-highlight-color:transparent}
 
 /* HERO */
-.hero{
-  background:linear-gradient(160deg,#38bdf8 0%,#0ea5e9 40%,#0284c7 100%);
-  color:#fff;padding:44px 20px 64px;text-align:center;
-  position:relative;overflow:hidden;
-}
-.hero-deco{position:absolute;font-size:2.2em;opacity:0.18;pointer-events:none}
-.hero h1{font-size:1.8em;letter-spacing:0.08em;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,0.12)}
-.hero .sub{font-size:1em;opacity:0.92;margin-top:4px;font-weight:500}
-.hero .dates{font-size:0.85em;opacity:0.7;margin-top:2px}
-.hero .members{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);
-  border-radius:24px;padding:8px 18px;margin-top:14px;font-size:0.82em;
-  border:1px solid rgba(255,255,255,0.2)
-}
-.wave-wrap{position:absolute;bottom:-1px;left:0;right:0;line-height:0}
-.wave-wrap svg{display:block;width:100%;height:40px}
+.hero{background:linear-gradient(160deg,#38bdf8,#0ea5e9 40%,#0284c7);color:#fff;padding:44px 20px 64px;text-align:center;position:relative;overflow:hidden}
+.hero-d{position:absolute;font-size:2.2em;opacity:.18;pointer-events:none}
+.hero h1{font-size:1.8em;letter-spacing:.08em;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.12)}
+.hero .sub{font-size:1em;opacity:.92;margin-top:4px;font-weight:500}
+.hero .dates{font-size:.85em;opacity:.7;margin-top:2px}
+.hero .members{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border-radius:24px;padding:8px 18px;margin-top:14px;font-size:.82em;border:1px solid rgba(255,255,255,.2)}
+.ww{position:absolute;bottom:-1px;left:0;right:0;line-height:0}
+.ww svg{display:block;width:100%;height:40px}
 .w1{animation:wm 8s ease-in-out infinite}
-.w2{animation:wm 6s ease-in-out infinite reverse;opacity:0.5;position:absolute;bottom:0;left:0;right:0}
+.w2{animation:wm 6s ease-in-out infinite reverse;opacity:.5;position:absolute;bottom:0;left:0;right:0}
 @keyframes wm{0%,100%{transform:translateX(0)}50%{transform:translateX(-25px)}}
 
-/* TAB BAR */
-.tab-bar{
-  position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);
-  border-bottom:1px solid #e2e8f0;
-  overflow-x:auto;display:flex;scrollbar-width:none;
-  -webkit-overflow-scrolling:touch
-}
-.tab-bar::-webkit-scrollbar{display:none}
-.tab-btn{
-  flex:1 0 auto;min-width:20%;padding:10px 14px;text-align:center;
-  font-size:0.76em;font-weight:700;color:var(--text-light);
-  border:none;background:none;cursor:pointer;
-  border-bottom:3px solid transparent;transition:all 0.2s;white-space:nowrap
-}
-.tab-btn .td{font-size:1.1em;display:block}
-.tab-btn .ti{font-size:0.85em;font-weight:500;opacity:0.7}
-.tab-btn.active{color:var(--text)}
-.tab-btn[data-day="1"].active{border-bottom-color:var(--day1)}
-.tab-btn[data-day="2"].active{border-bottom-color:var(--day2)}
-.tab-btn[data-day="3"].active{border-bottom-color:var(--day3)}
-.tab-btn[data-day="4"].active{border-bottom-color:var(--day4)}
-.tab-btn[data-day="5"].active{border-bottom-color:var(--day5)}
-
+/* TAB */
+.tab{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;overflow-x:auto;display:flex;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tab::-webkit-scrollbar{display:none}
+.tab button{flex:1 0 auto;min-width:20%;padding:10px 14px;text-align:center;font-size:.76em;font-weight:700;color:var(--mute);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap}
+.tab button .td{font-size:1.1em;display:block}
+.tab button .ti{font-size:.85em;font-weight:500;opacity:.7}
+.tab button.active{color:var(--text)}
+.tab button[data-day="1"].active{border-bottom-color:var(--day1)}
+.tab button[data-day="2"].active{border-bottom-color:var(--day2)}
+.tab button[data-day="3"].active{border-bottom-color:var(--day3)}
+.tab button[data-day="4"].active{border-bottom-color:var(--day4)}
+.tab button[data-day="5"].active{border-bottom-color:var(--day5)}
 .container{max-width:680px;margin:0 auto;padding:0 12px 40px}
 
-/* DAY SECTION */
-.day-sec{margin:24px 0;scroll-margin-top:70px}
-.day-hdr{
-  position:relative;border-radius:20px;padding:22px 20px 18px;
-  color:#fff;overflow:hidden;
-  display:flex;align-items:center;gap:14px
-}
-.day-hdr.d1{background:linear-gradient(135deg,#f97316,#ea580c)}
-.day-hdr.d2{background:linear-gradient(135deg,#38bdf8,#0284c7)}
-.day-hdr.d3{background:linear-gradient(135deg,#4ade80,#16a34a)}
-.day-hdr.d4{background:linear-gradient(135deg,#f472b6,#db2777)}
-.day-hdr.d5{background:linear-gradient(135deg,#94a3b8,#475569)}
-.day-hdr-deco{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:3.5em;opacity:0.2;pointer-events:none}
-.day-hdr .day-n{font-size:2em;font-weight:900;line-height:1;opacity:0.9}
-.day-hdr .day-date{font-size:0.85em;opacity:0.85}
-.day-hdr .day-t{font-size:1.05em;font-weight:700}
-.day-hdr .day-st{font-size:0.8em;opacity:0.8}
+/* DAY */
+.ds{margin:24px 0;scroll-margin-top:70px}
+.dh{position:relative;border-radius:20px;padding:22px 20px 18px;color:#fff;overflow:hidden;display:flex;align-items:center;gap:14px}
+.dh.d1{background:linear-gradient(135deg,#f97316,#ea580c)}
+.dh.d2{background:linear-gradient(135deg,#38bdf8,#0284c7)}
+.dh.d3{background:linear-gradient(135deg,#4ade80,#16a34a)}
+.dh.d4{background:linear-gradient(135deg,#f472b6,#db2777)}
+.dh.d5{background:linear-gradient(135deg,#94a3b8,#475569)}
+.dh-deco{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:3.5em;opacity:.2;pointer-events:none}
+.dh .dn{font-size:2em;font-weight:900;line-height:1;opacity:.9}
+.dh .dd{font-size:.85em;opacity:.85}
+.dh .dt{font-size:1.05em;font-weight:700}
+.dh .dst{font-size:.8em;opacity:.8}
 
-/* TIME BLOCK */
-.tb{
-  margin:14px 0;background:var(--card);border-radius:16px;
-  box-shadow:0 1px 4px rgba(0,0,0,0.05);overflow:hidden
-}
-.tb-hdr{
-  display:flex;align-items:center;gap:8px;
-  padding:12px 16px;font-size:0.82em;font-weight:700;
-  color:var(--text-light);border-bottom:1px solid #f1f5f9
-}
-.tb-hdr .tb-i{font-size:1.3em}
-.tb-body{padding:14px 16px}
+/* BLOCK */
+.bl{margin:14px 0;background:var(--card);border-radius:16px;box-shadow:0 1px 4px rgba(0,0,0,.05);overflow:hidden}
+.bh{display:flex;align-items:center;gap:8px;padding:12px 16px;font-size:.82em;font-weight:700;color:var(--mute);border-bottom:1px solid #f1f5f9}
+.bh .bi{font-size:1.3em}
+.bb{padding:14px 16px}
 
-/* CONFIRMED TIMELINE */
-.confirmed{
-  position:relative;padding-left:24px;margin-bottom:12px
-}
-.confirmed::before{
-  content:'';position:absolute;left:5px;top:8px;bottom:8px;
-  width:2px;background:#cbd5e1;border-radius:2px
-}
-.c-item{position:relative;margin-bottom:10px}
-.c-item:last-child{margin-bottom:0}
-.c-item::before{
-  content:'';position:absolute;left:-22px;top:7px;
-  width:8px;height:8px;border-radius:50%;
-  background:#94a3b8;border:2px solid #fff;box-shadow:0 0 0 2px #94a3b8
-}
-.c-item.fixed::before{background:#f97316;box-shadow:0 0 0 2px #f97316}
-.c-time{font-size:0.75em;color:var(--text-light);font-weight:700}
-.c-title{font-weight:700;font-size:0.9em}
-.c-desc{font-size:0.8em;color:var(--text-light)}
-.c-tag{
-  display:inline-block;font-size:0.65em;padding:2px 7px;
-  border-radius:8px;font-weight:600;margin:2px 2px 0 0
-}
-.fixed-label{
-  display:inline-block;font-size:0.6em;background:#f97316;color:#fff;
-  padding:1px 7px;border-radius:6px;font-weight:700;margin-left:6px;
-  vertical-align:middle
-}
+/* CONFIRMED */
+.cf{position:relative;padding-left:24px;margin-bottom:12px}
+.cf::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:#cbd5e1;border-radius:2px}
+.ci{position:relative;margin-bottom:10px}
+.ci:last-child{margin-bottom:0}
+.ci::before{content:'';position:absolute;left:-22px;top:7px;width:8px;height:8px;border-radius:50%;background:#94a3b8;border:2px solid #fff;box-shadow:0 0 0 2px #94a3b8}
+.ci.fx::before{background:#f97316;box-shadow:0 0 0 2px #f97316}
+.ct{font-size:.75em;color:var(--mute);font-weight:700}
+.cn{font-weight:700;font-size:.9em}
+.cd{font-size:.8em;color:var(--mute)}
+.cg{display:inline-block;font-size:.65em;padding:2px 7px;border-radius:8px;font-weight:600;margin:2px 2px 0 0}
+.fl{display:inline-block;font-size:.6em;background:#f97316;color:#fff;padding:1px 7px;border-radius:6px;font-weight:700;margin-left:6px;vertical-align:middle}
 
 /* OPTIONS */
-.opt-h{
-  font-size:0.85em;font-weight:700;margin:14px 0 8px;
-  display:flex;align-items:center;gap:6px
-}
-.opt-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:480px){.opt-g{grid-template-columns:1fr}}
-.oc{
-  background:var(--card);border-radius:14px;padding:12px;
-  cursor:pointer;user-select:none;
-  border:2px solid #e8e4de;transition:all 0.2s;position:relative;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04)
-}
-.oc:hover{border-color:#94a3b8;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-.oc:active{transform:scale(0.98)}
-.oc.selected{border-color:var(--sel-border);background:var(--sel-bg);box-shadow:0 2px 12px rgba(59,130,246,0.15)}
-.oc.selected::after{
-  content:'\2713';position:absolute;top:8px;right:10px;
-  background:#3b82f6;color:#fff;width:22px;height:22px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;font-size:0.7em;font-weight:800
-}
-.oc .oc-emoji{font-size:1.6em;margin-bottom:4px}
-.oc .oc-cat{
-  font-size:0.6em;font-weight:600;padding:2px 7px;border-radius:8px;
-  display:inline-block;margin-bottom:4px
-}
-.cat-s{background:#d1fae5;color:#065f46}
-.cat-f{background:#fce7f3;color:#9d174d}
-.cat-sh{background:#ede9fe;color:#5b21b6}
-.cat-c{background:#fef3c7;color:#92400e}
-.oc .oc-n{font-weight:700;font-size:0.88em;margin-bottom:3px;padding-right:22px}
-.oc .oc-d{font-size:0.76em;color:var(--text-light);margin-bottom:5px}
-.oc .oc-tags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px}
-.ot{font-size:0.62em;padding:2px 6px;border-radius:7px;font-weight:600;white-space:nowrap}
-.t-dog{background:#fef3c7;color:#92400e}
-.t-yen{background:#dbeafe;color:#1e40af}
-.t-hi{background:#d1fae5;color:#065f46}
-.t-warn{background:#fee2e2;color:#991b1b}
-.t-time{background:#f1f5f9;color:#475569}
-.oc .oc-map{
-  display:inline-flex;align-items:center;gap:3px;
-  color:#2563eb;text-decoration:none;font-size:0.73em;font-weight:600
-}
-.oc .oc-map:hover{text-decoration:underline}
+.oh{font-size:.85em;font-weight:700;margin:14px 0 8px;display:flex;align-items:center;gap:6px}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:480px){.og{grid-template-columns:1fr}}
+.oc{background:var(--card);border-radius:14px;padding:12px;cursor:pointer;user-select:none;border:2px solid #e8e4de;transition:all .2s;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.oc:hover{border-color:#94a3b8;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.oc:active{transform:scale(.98)}
+.oc.selected{border-color:var(--sel-bd);background:var(--sel-bg);box-shadow:0 2px 12px rgba(59,130,246,.15)}
+.oc.selected::after{content:'\2713';position:absolute;top:8px;right:10px;background:#3b82f6;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7em;font-weight:800}
+.oc .oe{font-size:1.6em;margin-bottom:4px}
+.oc .ocat{font-size:.6em;font-weight:600;padding:2px 7px;border-radius:8px;display:inline-block;margin-bottom:4px}
+.cs{background:#d1fae5;color:#065f46}
+.cf2{background:#fce7f3;color:#9d174d}
+.csh{background:#ede9fe;color:#5b21b6}
+.cc{background:#fef3c7;color:#92400e}
+.oc .on{font-weight:700;font-size:.88em;margin-bottom:3px;padding-right:22px}
+.oc .od{font-size:.76em;color:var(--mute);margin-bottom:5px}
+.oc .ot{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px}
+.tg{font-size:.62em;padding:2px 6px;border-radius:7px;font-weight:600;white-space:nowrap}
+.td2{background:#fef3c7;color:#92400e}
+.ty{background:#dbeafe;color:#1e40af}
+.th{background:#d1fae5;color:#065f46}
+.tw{background:#fee2e2;color:#991b1b}
+.tt{background:#f1f5f9;color:#475569}
+.tcar{background:#e0e7ff;color:#3730a3}
+.oc .om{display:inline-flex;align-items:center;gap:3px;color:#2563eb;text-decoration:none;font-size:.73em;font-weight:600}
+.oc .om:hover{text-decoration:underline}
 
 /* NOTICE */
-.notice{
-  background:#fef3c7;border-radius:12px;padding:12px 14px;
-  margin:10px 0;font-size:0.8em;border-left:4px solid #f59e0b
-}
+.notice{background:#fef3c7;border-radius:12px;padding:12px 14px;margin:10px 0;font-size:.8em;border-left:4px solid #f59e0b}
 .notice strong{color:#92400e}
+.route-note{background:#e0f2fe;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.78em;border-left:4px solid #0ea5e9;color:#0c4a6e}
 
 /* ACCOM */
-.accom{
-  background:linear-gradient(135deg,#eff6ff,#f0f9ff);
-  border-radius:14px;padding:14px;margin:10px 0;border:1px solid #bfdbfe
-}
-.accom-t{font-weight:700;font-size:0.9em;margin-bottom:4px}
-.accom-d{font-size:0.8em;color:var(--text-light)}
+.accom{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border-radius:14px;padding:14px;margin:10px 0;border:1px solid #bfdbfe}
+.accom b{font-size:.9em}
+.accom .ad{font-size:.8em;color:var(--mute)}
 
-/* INFO BOX */
-.info-box{
-  margin:20px 0;background:var(--card);border-radius:16px;
-  box-shadow:0 1px 4px rgba(0,0,0,0.06);padding:18px
-}
-.info-box h3{font-size:0.92em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.info-box ul{list-style:none;font-size:0.83em}
-.info-box li{padding:4px 0 4px 16px;position:relative}
-.info-box li::before{content:'\25B8';position:absolute;left:0;color:#0ea5e9}
-.info-box a{color:#2563eb;text-decoration:none}
-.info-box a:hover{text-decoration:underline}
+/* INFO */
+.ib{margin:20px 0;background:var(--card);border-radius:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:18px}
+.ib h3{font-size:.92em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ib ul{list-style:none;font-size:.83em}
+.ib li{padding:4px 0 4px 16px;position:relative}
+.ib li::before{content:'\25B8';position:absolute;left:0;color:#0ea5e9}
+.ib a{color:#2563eb;text-decoration:none}
+.ib a:hover{text-decoration:underline}
 
-/* SELECTION BAR */
-.sel-bar{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(30,41,59,0.92);backdrop-filter:blur(8px);
-  color:#fff;padding:10px 20px;
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:0.82em;font-weight:600;
-  transform:translateY(100%);transition:transform 0.3s;z-index:200
-}
-.sel-bar.visible{transform:translateY(0)}
-.sel-bar .sc{display:flex;align-items:center;gap:6px}
-.sel-r{
-  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);
-  color:#fff;padding:5px 14px;border-radius:8px;font-size:0.85em;cursor:pointer;font-weight:600
-}
-.sel-r:hover{background:rgba(255,255,255,0.25)}
-.footer{text-align:center;padding:24px 20px;font-size:0.75em;color:var(--text-light)}
-@media(max-width:400px){.hero h1{font-size:1.4em}.container{padding:0 8px 40px}.hero{padding:36px 16px 50px}}
+/* FOOTER / BAR */
+.footer{text-align:center;padding:24px 20px;font-size:.75em;color:var(--mute)}
+.sb{position:fixed;bottom:0;left:0;right:0;background:rgba(30,41,59,.92);backdrop-filter:blur(8px);color:#fff;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;font-size:.82em;font-weight:600;transform:translateY(100%);transition:transform .3s;z-index:200}
+.sb.visible{transform:translateY(0)}
+.sr{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 14px;border-radius:8px;font-size:.85em;cursor:pointer;font-weight:600}
+.sr:hover{background:rgba(255,255,255,.25)}
+@media(max-width:400px){.hero h1{font-size:1.4em}.container{padding:0 8px 40px}}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <span class="hero-deco" style="top:10px;left:10px">🌺</span>
-  <span class="hero-deco" style="top:50px;right:20px">🐚</span>
-  <span class="hero-deco" style="bottom:50px;left:30px">🌴</span>
-  <span class="hero-deco" style="top:20px;right:60%">🦀</span>
-  <span class="hero-deco" style="bottom:60px;right:40px">🍍</span>
+  <span class="hero-d" style="top:10px;left:10px">🌺</span>
+  <span class="hero-d" style="top:50px;right:20px">🐚</span>
+  <span class="hero-d" style="bottom:50px;left:30px">🌴</span>
+  <span class="hero-d" style="top:20px;right:60%">🦀</span>
+  <span class="hero-d" style="bottom:60px;right:40px">🍍</span>
   <h1>🌺 OKINAWA TRIP 2025</h1>
   <div class="sub">5.6 Tue &ndash; 5.10 Sat</div>
   <div class="dates">4泊5日</div>
   <div class="members"><span>夫婦 + 友人</span><span>|</span><span>🐩トイプー2 / ヨーキー1 / オウシー2</span></div>
-  <div class="wave-wrap">
+  <div class="ww">
     <svg class="w1" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C150,35 350,0 600,20 C850,40 1050,5 1200,20 L1200,40 L0,40Z" fill="#f5f0e8"/></svg>
     <svg class="w2" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,25 C200,5 400,35 600,15 C800,0 1000,30 1200,10 L1200,40 L0,40Z" fill="#f5f0e8"/></svg>
   </div>
 </div>
 
-<!-- TAB BAR -->
-<div class="tab-bar" id="tabBar">
-  <button class="tab-btn active" data-day="1" onclick="scrollToDay(1)"><span class="td">DAY1</span><span class="ti">5/6火 到着</span></button>
-  <button class="tab-btn" data-day="2" onclick="scrollToDay(2)"><span class="td">DAY2</span><span class="ti">5/7水 美ら海</span></button>
-  <button class="tab-btn" data-day="3" onclick="scrollToDay(3)"><span class="td">DAY3</span><span class="ti">5/8木 やんばる</span></button>
-  <button class="tab-btn" data-day="4" onclick="scrollToDay(4)"><span class="td">DAY4</span><span class="ti">5/9金 のんびり</span></button>
-  <button class="tab-btn" data-day="5" onclick="scrollToDay(5)"><span class="td">DAY5</span><span class="ti">5/10土 帰路</span></button>
+<div class="tab" id="tabBar">
+  <button class="active" data-day="1" onclick="scrollToDay(1)"><span class="td">DAY1</span><span class="ti">5/6火 到着</span></button>
+  <button data-day="2" onclick="scrollToDay(2)"><span class="td">DAY2</span><span class="ti">5/7水 美ら海</span></button>
+  <button data-day="3" onclick="scrollToDay(3)"><span class="td">DAY3</span><span class="ti">5/8木 やんばる</span></button>
+  <button data-day="4" onclick="scrollToDay(4)"><span class="td">DAY4</span><span class="ti">5/9金 のんびり</span></button>
+  <button data-day="5" onclick="scrollToDay(5)"><span class="td">DAY5</span><span class="ti">5/10土 帰路</span></button>
 </div>
 
 <div class="container">
 
 <!-- ==================== DAY 1 ==================== -->
-<div class="day-sec" id="day1">
-  <div class="day-hdr d1">
-    <div><div class="day-n">DAY1</div><div class="day-date">5/6 火</div></div>
-    <div><div class="day-t">到着日 &mdash; 那覇 → 北部へ</div><div class="day-st">友人合流 / Airbnbチェックイン</div></div>
-    <span class="day-hdr-deco">✈️</span>
+<div class="ds" id="day1">
+  <div class="dh d1">
+    <div><div class="dn">DAY1</div><div class="dd">5/6 火</div></div>
+    <div><div class="dt">到着日 &mdash; 那覇 → 北部へ</div><div class="dst">友人合流 / Airbnbチェックイン</div></div>
+    <span class="dh-deco">✈️</span>
   </div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">☀️</span> 朝〜昼（確定スケジュール）</div>
-    <div class="tb-body">
-      <div class="confirmed">
-        <div class="c-item"><div class="c-time">8:20</div><div class="c-title">セントレア発 ✈️</div></div>
-        <div class="c-item"><div class="c-time">10:40</div><div class="c-title">那覇空港着</div><div class="c-desc">OTS送迎バスで臨空豊崎営業所へ</div></div>
-        <div class="c-item"><div class="c-time">~11:30</div><div class="c-title">レンタカー受取・出発 🚗</div></div>
-        <div class="c-item fixed"><div class="c-time">~12:00</div><div class="c-title">A&W 牧港店でランチ 🍔<span class="fixed-label">確定</span></div><div class="c-desc">沖縄限定バーガー！ルートビアおかわり自由。ドライブイン形式で車からも注文OK</div><span class="c-tag t-dog">テラス・車内OK</span> <span class="c-tag t-yen">~800円/人</span></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">☀️</span> 朝〜昼（確定）</div><div class="bb">
+    <div class="cf">
+      <div class="ci"><div class="ct">8:20</div><div class="cn">セントレア発 ✈️</div></div>
+      <div class="ci"><div class="ct">10:40</div><div class="cn">那覇空港着</div><div class="cd">OTS送迎バスで臨空豊崎営業所へ</div></div>
+      <div class="ci"><div class="ct">~11:30</div><div class="cn">レンタカー受取・出発 🚗</div></div>
+      <div class="ci fx"><div class="ct">~12:00</div><div class="cn">A&W 牧港店でランチ 🍔<span class="fl">確定</span></div><div class="cd">沖縄限定バーガー！ルートビアおかわり自由</div><span class="cg td2">テラス・車内OK</span> <span class="cg ty">~800円/人</span></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🛒</span> 買い出しスポット</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d1-sanei" onclick="t(this)"><div class="oc-emoji">🏬</div><span class="oc-cat cat-sh">ショッピング</span><div class="oc-n">サンエー経塚シティ</div><div class="oc-d">浦添市。A&Wから近い。品揃え豊富</div><div class="oc-tags"><span class="ot t-hi">大型</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E7%B5%8C%E5%A1%9A%E3%82%B7%E3%83%86%E3%82%A3" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-aeon" onclick="t(this)"><div class="oc-emoji">🏬</div><span class="oc-cat cat-sh">ショッピング</span><div class="oc-n">イオン名護店</div><div class="oc-d">北部到着後に寄るなら。BBQ食材充実</div><div class="oc-tags"><span class="ot t-hi">大型</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E5%90%8D%E8%AD%B7%E5%BA%97" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-kanehide" onclick="t(this)"><div class="oc-emoji">🛒</div><span class="oc-cat cat-sh">ショッピング</span><div class="oc-n">かねひで</div><div class="oc-d">地元密着の激安スーパー。ローカル食材の宝庫</div><div class="oc-tags"><span class="ot t-hi">激安</span></div></div>
-        <div class="oc" data-id="d1-kyoda" onclick="t(this)"><div class="oc-emoji">🏪</div><span class="oc-cat cat-sh">ショッピング</span><div class="oc-n">道の駅 許田</div><div class="oc-d">高速降りてすぐ。天ぷら・サーターアンダギーも激安！</div><div class="oc-tags"><span class="ot t-hi">名物おやつ</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85+%E8%A8%B1%E7%94%B0" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🛒</span> 買い出しスポット（ルート上で選択）</div><div class="bb">
+    <div class="route-note">💡 A&W牧港 → 高速 → 許田IC → 宿（本部/今帰仁エリア）のルート上から選択</div>
+    <div class="og">
+      <div class="oc" data-id="d1-sanei" onclick="t(this)"><div class="oe">🏬</div><span class="ocat csh">ショッピング</span><div class="on">サンエー経塚シティ</div><div class="od">浦添市。A&Wから近い。品揃え豊富</div><div class="ot"><span class="tg th">大型</span><span class="tg tcar">🚗A&Wから10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E7%B5%8C%E5%A1%9A%E3%82%B7%E3%83%86%E3%82%A3" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-aeon" onclick="t(this)"><div class="oe">🏬</div><span class="ocat csh">ショッピング</span><div class="on">イオン名護店</div><div class="od">北部到着後に寄るなら。BBQ食材充実</div><div class="ot"><span class="tg th">大型</span><span class="tg tcar">🚗許田ICから5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E5%90%8D%E8%AD%B7%E5%BA%97" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-kyoda" onclick="t(this)"><div class="oe">🏪</div><span class="ocat csh">ショッピング</span><div class="on">道の駅 許田</div><div class="od">高速降りてすぐ。天ぷら・サーターアンダギーも激安</div><div class="ot"><span class="tg th">名物おやつ</span><span class="tg tcar">🚗許田IC出口</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85+%E8%A8%B1%E7%94%B0" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌤</span> 午後（確定スケジュール）</div>
-    <div class="tb-body">
-      <div class="confirmed">
-        <div class="c-item"><div class="c-time">~13:30</div><div class="c-title">高速で北部へ 🚗</div><div class="c-desc">沖縄自動車道 → 許田IC → 宿（約1〜1.5時間）</div></div>
-        <div class="c-item"><div class="c-time">~15:00</div><div class="c-title">Airbnb チェックイン 🏠</div><div class="c-desc">一軒家・3BR・庭&プール・BBQ設備・駐車2台</div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌤</span> 午後（確定）</div><div class="bb">
+    <div class="cf">
+      <div class="ci"><div class="ct">~13:30</div><div class="cn">高速で北部へ 🚗</div><div class="cd">沖縄自動車道 → 許田IC → 宿（約1〜1.5時間）</div></div>
+      <div class="ci"><div class="ct">~15:00</div><div class="cn">Airbnb チェックイン 🏠</div><div class="cd">一軒家・3BR・庭&プール・BBQ設備・駐車2台</div></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌅</span> 夕方の過ごし方（チェックイン後）</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d1-nago-park" onclick="t(this)"><div class="oc-emoji">🏔</div><span class="oc-cat cat-s">観光</span><div class="oc-n">名護城公園</div><div class="oc-d">名護市街を一望する高台。夕日も綺麗。犬と散歩OK</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E8%AD%B7%E5%9F%8E%E5%85%AC%E5%9C%92" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-21beach" onclick="t(this)"><div class="oc-emoji">🏖</div><span class="oc-cat cat-s">観光</span><div class="oc-n">21世紀の森ビーチ</div><div class="oc-d">名護市内のビーチ。夕方の散歩に最高</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-time">30分〜</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=21%E4%B8%96%E7%B4%80%E3%81%AE%E6%A3%AE%E3%83%93%E3%83%BC%E3%83%81+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-busena" onclick="t(this)"><div class="oc-emoji">🐟</div><span class="oc-cat cat-s">観光</span><div class="oc-n">ブセナ海中公園</div><div class="oc-d">海中展望塔＆グラス底ボート。魚が間近に</div><div class="oc-tags"><span class="ot t-yen">展望塔1,050円</span><span class="ot t-time">1時間</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%96%E3%82%BB%E3%83%8A%E6%B5%B7%E4%B8%AD%E5%85%AC%E5%9C%92" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-pineapple" onclick="t(this)"><div class="oc-emoji">🍍</div><span class="oc-cat cat-s">観光</span><div class="oc-n">ナゴパイナップルパーク</div><div class="oc-d">パイナップル尽くしのテーマパーク。試食いっぱい</div><div class="oc-tags"><span class="ot t-yen">1,200円</span><span class="ot t-warn">犬NG</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8A%E3%82%B4%E3%83%91%E3%82%A4%E3%83%8A%E3%83%83%E3%83%97%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-orion" onclick="t(this)"><div class="oc-emoji">🍺</div><span class="oc-cat cat-s">観光</span><div class="oc-n">オリオンハッピーパーク</div><div class="oc-d">オリオンビール工場見学。試飲2杯無料！要予約</div><div class="oc-tags"><span class="ot t-hi">無料</span><span class="ot t-warn">犬NG</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AA%E3%83%AA%E3%82%AA%E3%83%B3%E3%83%8F%E3%83%83%E3%83%94%E3%83%BC%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-pool" onclick="t(this)"><div class="oc-emoji">🏊</div><span class="oc-cat cat-c">のんびり</span><div class="oc-n">宿でのんびり（プール&庭）</div><div class="oc-d">移動の疲れを癒す。犬もストレス発散</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌅</span> チェックイン後（宿 = 本部/今帰仁エリア）</div><div class="bb">
+    <div class="route-note">💡 宿は美ら海水族館の近く。近場スポットを距離順に表示</div>
+    <div class="og">
+      <div class="oc" data-id="d1-bise" onclick="t(this)"><div class="oe">🌳</div><span class="ocat cs">観光</span><div class="on">備瀬のフクギ並木 &amp; 備瀬海岸</div><div class="od">2万本のフクギトンネル。抜けると海岸で夕日が絶景</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">夕日スポット</span><span class="tg tcar">🚗3分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-gorilla" onclick="t(this)"><div class="oe">🏖</div><span class="ocat cs">観光</span><div class="on">ゴリラチョップ（崎本部ビーチ）</div><div class="od">穴場ビーチ。広い公園あり、混雑少ない。設備充実</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">穴場</span><span class="tg tcar">🚗10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B4%E3%83%AA%E3%83%A9%E3%83%81%E3%83%A7%E3%83%83%E3%83%97+%E5%B4%8E%E6%9C%AC%E9%83%A8" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-sesoko" onclick="t(this)"><div class="oe">🏝</div><span class="ocat cs">観光</span><div class="on">瀬底島（アンチ浜）</div><div class="od">橋で渡れる離島。天然白砂の透明ビーチ、夕日も◎</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">絶景</span><span class="tg tcar">🚗15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E5%BA%95%E3%83%93%E3%83%BC%E3%83%81" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-pineapple" onclick="t(this)"><div class="oe">🍍</div><span class="ocat cs">観光</span><div class="on">ナゴパイナップルパーク</div><div class="od">パイナップル尽くしのテーマパーク。試食いっぱい</div><div class="ot"><span class="tg ty">1,200円</span><span class="tg tw">犬NG</span><span class="tg tcar">🚗25分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8A%E3%82%B4%E3%83%91%E3%82%A4%E3%83%8A%E3%83%83%E3%83%97%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-nago-park" onclick="t(this)"><div class="oe">🏔</div><span class="ocat cs">観光</span><div class="on">名護城公園</div><div class="od">名護市街を一望する高台。夕日も綺麗</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">絶景</span><span class="tg tcar">🚗30分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%90%8D%E8%AD%B7%E5%9F%8E%E5%85%AC%E5%9C%92" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-orion" onclick="t(this)"><div class="oe">🍺</div><span class="ocat cs">観光</span><div class="on">オリオンハッピーパーク</div><div class="od">ビール工場見学。試飲2杯無料！要予約</div><div class="ot"><span class="tg th">無料</span><span class="tg tw">犬NG</span><span class="tg tcar">🚗30分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AA%E3%83%AA%E3%82%AA%E3%83%B3%E3%83%8F%E3%83%83%E3%83%94%E3%83%BC%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-pool" onclick="t(this)"><div class="oe">🏊</div><span class="ocat cc">のんびり</span><div class="on">宿でのんびり（プール&庭）</div><div class="od">移動疲れを癒す。犬もストレス発散</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗0分</span></div></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌙</span> ディナー</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d1-bbq" onclick="t(this)"><div class="oc-emoji">🔥</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">宿でBBQ</div><div class="oc-d">買い出し食材で！友人とワイワイ＆犬も庭で自由に</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d1-takeout" onclick="t(this)"><div class="oc-emoji">🥡</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">名護の大衆食堂テイクアウト</div><div class="oc-d">沖縄料理を買って宿で宴会スタイル</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d1-steak88" onclick="t(this)"><div class="oc-emoji">🥩</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">ステーキハウス88 名護店</div><div class="oc-d">沖縄ステーキ文化の代表格。テイクアウトも可</div><div class="oc-tags"><span class="ot t-yen">~2,000円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B988+%E5%90%8D%E8%AD%B7%E5%BA%97" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d1-chinbora" onclick="t(this)"><div class="oc-emoji">🐙</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">海のちんぼらぁ</div><div class="oc-d">島料理居酒屋。新鮮な海鮮＆泡盛</div><div class="oc-tags"><span class="ot t-yen">~2,500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E3%81%AE%E3%81%A1%E3%82%93%E3%81%BC%E3%82%89%E3%81%81+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌙</span> ディナー</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d1-bbq" onclick="t(this)"><div class="oe">🔥</div><span class="ocat cf2">グルメ</span><div class="on">宿でBBQ</div><div class="od">買い出し食材で！友人とワイワイ＆犬も庭で</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗0分</span></div></div>
+      <div class="oc" data-id="d1-s88" onclick="t(this)"><div class="oe">🥩</div><span class="ocat cf2">グルメ</span><div class="on">ステーキハウス88 美ら海店</div><div class="od">美ら海水族館すぐ近く！テイクアウト→宿もOK</div><div class="ot"><span class="tg ty">~2,000円</span><span class="tg tcar">🚗5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B988+%E7%BE%8E%E3%82%89%E6%B5%B7%E5%BA%97" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-kishi" onclick="t(this)"><div class="oe">🍜</div><span class="ocat cf2">グルメ</span><div class="on">きしもと食堂（本部町）</div><div class="od">創業100年超の沖縄そば超有名店</div><div class="ot"><span class="tg th">名店</span><span class="tg ty">~700円</span><span class="tg tcar">🚗10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d1-takeout" onclick="t(this)"><div class="oe">🥡</div><span class="ocat cf2">グルメ</span><div class="on">名護の大衆食堂テイクアウト</div><div class="od">沖縄料理を買って宿で宴会スタイル</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗30分</span></div></div>
     </div>
-  </div>
+  </div></div>
 </div>
 
 <!-- ==================== DAY 2 ==================== -->
-<div class="day-sec" id="day2">
-  <div class="day-hdr d2">
-    <div><div class="day-n">DAY2</div><div class="day-date">5/7 水</div></div>
-    <div><div class="day-t">北部観光 &mdash; 美ら海&古宇利島</div><div class="day-st">友人と終日観光</div></div>
-    <span class="day-hdr-deco">🐠</span>
+<div class="ds" id="day2">
+  <div class="dh d2">
+    <div><div class="dn">DAY2</div><div class="dd">5/7 水</div></div>
+    <div><div class="dt">北部観光 &mdash; 美ら海&古宇利島</div><div class="dst">友人と終日観光</div></div>
+    <span class="dh-deco">🐠</span>
   </div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">☀️</span> 午前の観光</div>
-    <div class="tb-body">
-      <div class="confirmed"><div class="c-item"><div class="c-time">8:00</div><div class="c-title">朝食（宿で自炊）</div></div></div>
-      <div class="opt-g">
-        <div class="oc" data-id="d2-fukugi" onclick="t(this)"><div class="oc-emoji">🌳</div><span class="oc-cat cat-s">観光</span><div class="oc-n">備瀬のフクギ並木</div><div class="oc-d">2万本のフクギトンネル。犬と海岸散歩も</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-chura" onclick="t(this)"><div class="oc-emoji">🐋</div><span class="oc-cat cat-s">観光</span><div class="oc-n">美ら海水族館</div><div class="oc-d">ジンベエザメの巨大水槽は必見！</div><div class="oc-tags"><span class="ot t-hi">世界級</span><span class="ot t-warn">犬制限あり</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-emerald" onclick="t(this)"><div class="oc-emoji">🏖</div><span class="oc-cat cat-s">観光</span><div class="oc-n">エメラルドビーチ</div><div class="oc-d">海洋博公園内の美しいビーチ。水族館とセットで</div><div class="oc-tags"><span class="ot t-hi">無料</span><span class="ot t-dog">犬散歩OK</span></div></div>
-        <div class="oc" data-id="d2-sesoko" onclick="t(this)"><div class="oc-emoji">🏝</div><span class="oc-cat cat-s">観光</span><div class="oc-n">瀬底島ビーチ</div><div class="oc-d">橋で渡れる離島。透明度抜群のビーチ</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E5%BA%95%E3%83%93%E3%83%BC%E3%83%81" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
-      <div class="notice" style="margin-top:10px">
-        <strong>⚠ 美ら海水族館 犬の制限</strong><br>
-        館内: ペット不可 / 海洋博公園の屋外: <strong>小型犬のみ</strong>リード付きOK<br>
-        → トイプー2 &amp; ヨーキー1 = OK / オウシー2 = NG<br>
-        <strong>対策:</strong> 友人と交代制。一組が水族館、もう一組が犬と公園散歩。車内放置は絶対NG！
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">☀️</span> 午前の観光（宿の近場！）</div><div class="bb">
+    <div class="cf"><div class="ci"><div class="ct">8:00</div><div class="cn">朝食（宿で自炊）</div></div></div>
+    <div class="route-note">💡 午前のスポットは全て宿から15分以内。備瀬→美ら海→瀬底の順が効率的</div>
+    <div class="og">
+      <div class="oc" data-id="d2-fukugi" onclick="t(this)"><div class="oe">🌳</div><span class="ocat cs">観光</span><div class="on">備瀬のフクギ並木</div><div class="od">2万本のフクギトンネル。犬と海岸散歩も</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">絶景</span><span class="tg tcar">🚗3分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-chura" onclick="t(this)"><div class="oe">🐋</div><span class="ocat cs">観光</span><div class="on">美ら海水族館</div><div class="od">ジンベエザメの巨大水槽は必見！午前が空いてる</div><div class="ot"><span class="tg th">世界級</span><span class="tg tw">犬制限あり</span><span class="tg tcar">🚗5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-emerald" onclick="t(this)"><div class="oe">🏖</div><span class="ocat cs">観光</span><div class="on">エメラルドビーチ</div><div class="od">海洋博公園内。水族館とセットで</div><div class="ot"><span class="tg th">無料</span><span class="tg td2">犬散歩OK</span><span class="tg tcar">🚗5分</span></div></div>
+      <div class="oc" data-id="d2-sesoko" onclick="t(this)"><div class="oe">🏝</div><span class="ocat cs">観光</span><div class="on">瀬底島ビーチ</div><div class="od">橋で渡れる離島。透明度抜群。朝イチがおすすめ</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">絶景</span><span class="tg tcar">🚗15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E5%BA%95%E3%83%93%E3%83%BC%E3%83%81" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+    <div class="notice" style="margin-top:10px">
+      <strong>⚠ 美ら海水族館 犬の制限</strong><br>
+      館内: ペット不可 / 公園屋外: <strong>小型犬のみ</strong>リード付きOK<br>
+      → トイプー2 &amp; ヨーキー1 = OK / オウシー2 = NG<br>
+      <strong>対策:</strong> 友人と交代制。車内放置は絶対NG！
+    </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🍽</span> ランチ</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d2-kajin" onclick="t(this)"><div class="oc-emoji">🍕</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">花人逢（かじんほう）</div><div class="oc-d">高台から海一望。自家製ピザ名物。超人気店</div><div class="oc-tags"><span class="ot t-dog">テラス犬OK</span><span class="ot t-yen">~1,200円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-fukurubi" onclick="t(this)"><div class="oc-emoji">☕</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">Cafe フクルビ（古宇利島）</div><div class="oc-d">店主が犬好きでとても親切</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-yen">~1,000円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%95%E3%82%A7%E3%83%95%E3%82%AF%E3%83%AB%E3%83%93+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-kafuzu" onclick="t(this)"><div class="oc-emoji">🌿</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">かふーず</div><div class="oc-d">本部港を見下ろす絶景。地元食材の薬膳料理</div><div class="oc-tags"><span class="ot t-dog">全犬種OK</span><span class="ot t-yen">~1,000円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%B5%E3%83%BC%E3%81%9A+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-sousou" onclick="t(this)"><div class="oc-emoji">🍕</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">蒼蒼家（そうそうか）</div><div class="oc-d">美ら海水族館まで車10分。自家製ピザ</div><div class="oc-tags"><span class="ot t-dog">全犬種・店内もOK</span><span class="ot t-yen">~1,000円</span></div></div>
-        <div class="oc" data-id="d2-kishi" onclick="t(this)"><div class="oc-emoji">🍜</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">きしもと食堂</div><div class="oc-d">創業100年超の沖縄そば超有名店</div><div class="oc-tags"><span class="ot t-hi">名店</span><span class="ot t-yen">~700円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-shirasa" onclick="t(this)"><div class="oc-emoji">🦐</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">しらさ食堂（古宇利島）</div><div class="oc-d">古宇利島名物のウニ丼！海鮮が新鮮</div><div class="oc-tags"><span class="ot t-hi">名物</span><span class="ot t-yen">~1,500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%97%E3%82%89%E3%81%95%E9%A3%9F%E5%A0%82+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🍽</span> ランチ</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d2-kajin" onclick="t(this)"><div class="oe">🍕</div><span class="ocat cf2">グルメ</span><div class="on">花人逢（かじんほう）</div><div class="od">高台から海一望。自家製ピザ。超人気なので早めに</div><div class="ot"><span class="tg td2">テラス犬OK</span><span class="tg ty">~1,200円</span><span class="tg tcar">🚗15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-kafuzu" onclick="t(this)"><div class="oe">🌿</div><span class="ocat cf2">グルメ</span><div class="on">かふーず</div><div class="od">本部港を見下ろす絶景。地元食材の薬膳料理</div><div class="ot"><span class="tg td2">全犬種OK</span><span class="tg ty">~1,000円</span><span class="tg tcar">🚗10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%B5%E3%83%BC%E3%81%9A+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-sousou" onclick="t(this)"><div class="oe">🍕</div><span class="ocat cf2">グルメ</span><div class="on">蒼蒼家（そうそうか）</div><div class="od">美ら海水族館まで車10分。自家製ピザ</div><div class="ot"><span class="tg td2">全犬種・店内もOK</span><span class="tg ty">~1,000円</span><span class="tg tcar">🚗10分</span></div></div>
+      <div class="oc" data-id="d2-kishi2" onclick="t(this)"><div class="oe">🍜</div><span class="ocat cf2">グルメ</span><div class="on">きしもと食堂</div><div class="od">創業100年超の沖縄そば超有名店</div><div class="ot"><span class="tg th">名店</span><span class="tg ty">~700円</span><span class="tg tcar">🚗10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-fukurubi" onclick="t(this)"><div class="oe">☕</div><span class="ocat cf2">グルメ</span><div class="on">Cafe フクルビ（古宇利島）</div><div class="od">店主が犬好き。古宇利島ドライブ途中に</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg ty">~1,000円</span><span class="tg tcar">🚗40分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%95%E3%82%A7%E3%83%95%E3%82%AF%E3%83%AB%E3%83%93+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-shirasa" onclick="t(this)"><div class="oe">🦐</div><span class="ocat cf2">グルメ</span><div class="on">しらさ食堂（古宇利島）</div><div class="od">古宇利島名物のウニ丼！海鮮が新鮮</div><div class="ot"><span class="tg th">名物</span><span class="tg ty">~1,500円</span><span class="tg tcar">🚗40分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%81%97%E3%82%89%E3%81%95%E9%A3%9F%E5%A0%82+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌤</span> 午後の観光</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d2-kouri" onclick="t(this)"><div class="oc-emoji">🌉</div><span class="oc-cat cat-s">観光</span><div class="oc-n">古宇利島ドライブ</div><div class="oc-d">古宇利大橋の絶景ドライブ＆ハートロック</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%A4%A7%E6%A9%8B" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-tower" onclick="t(this)"><div class="oc-emoji">🗼</div><span class="oc-cat cat-s">観光</span><div class="oc-n">古宇利オーシャンタワー</div><div class="oc-d">展望台から360°の絶景。カートで登る</div><div class="oc-tags"><span class="ot t-yen">1,000円</span><span class="ot t-warn">犬NG</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%A4%E5%AE%87%E5%88%A9%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%BF%E3%83%AF%E3%83%BC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-warumi" onclick="t(this)"><div class="oc-emoji">🌊</div><span class="oc-cat cat-s">観光</span><div class="oc-n">ワルミ大橋展望</div><div class="oc-d">屋我地島と本部半島を結ぶ橋。展望スポット</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">穴場</span></div></div>
-        <div class="oc" data-id="d2-yagaji" onclick="t(this)"><div class="oc-emoji">🏝</div><span class="oc-cat cat-c">のんびり</span><div class="oc-n">屋我地島散策</div><div class="oc-d">静かな島をドライブ。マングローブ林も</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌤</span> 午後の観光</div><div class="bb">
+    <div class="route-note">💡 宿からワルミ大橋→屋我地島→古宇利大橋→古宇利島が効率的ルート</div>
+    <div class="og">
+      <div class="oc" data-id="d2-warumi" onclick="t(this)"><div class="oe">🌊</div><span class="ocat cs">観光</span><div class="on">ワルミ大橋</div><div class="od">今帰仁と屋我地島を結ぶ橋。展望スポット</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">穴場</span><span class="tg tcar">🚗15分</span></div></div>
+      <div class="oc" data-id="d2-yagaji" onclick="t(this)"><div class="oe">🏝</div><span class="ocat cc">のんびり</span><div class="on">屋我地島散策</div><div class="od">静かな島をドライブ。マングローブ林も</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗20分</span></div></div>
+      <div class="oc" data-id="d2-kouri" onclick="t(this)"><div class="oe">🌉</div><span class="ocat cs">観光</span><div class="on">古宇利島ドライブ &amp; ハートロック</div><div class="od">古宇利大橋の絶景！ハートロック＆ビーチ散歩</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">絶景</span><span class="tg tcar">🚗40分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%A4%A7%E6%A9%8B" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-tower" onclick="t(this)"><div class="oe">🗼</div><span class="ocat cs">観光</span><div class="on">古宇利オーシャンタワー</div><div class="od">展望台から360°の絶景。カートで登る</div><div class="ot"><span class="tg ty">1,000円</span><span class="tg tw">犬NG</span><span class="tg tcar">🚗40分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%A4%E5%AE%87%E5%88%A9%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%BF%E3%83%AF%E3%83%BC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌙</span> ディナー</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d2-bbq" onclick="t(this)"><div class="oc-emoji">🔥</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">宿でBBQ 第2夜</div><div class="oc-d">友人とワイワイ！</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d2-mori" onclick="t(this)"><div class="oc-emoji">🌲</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">森の巣箱（今帰仁村）</div><div class="oc-d">テラスに広い庭。犬はロングリードで走り回れる</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E3%81%AE%E5%B7%A3%E7%AE%B1+%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d2-to" onclick="t(this)"><div class="oc-emoji">🥡</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">名護の居酒屋テイクアウト</div><div class="oc-d">沖縄料理を買って宿で宴会</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌙</span> ディナー</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d2-bbq" onclick="t(this)"><div class="oe">🔥</div><span class="ocat cf2">グルメ</span><div class="on">宿でBBQ 第2夜</div><div class="od">友人とワイワイ！</div><div class="ot"><span class="tg td2">犬OK</span></div></div>
+      <div class="oc" data-id="d2-mori" onclick="t(this)"><div class="oe">🌲</div><span class="ocat cf2">グルメ</span><div class="on">森の巣箱（今帰仁村）</div><div class="od">テラスに広い庭。犬はロングリードで走り回れる</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E3%81%AE%E5%B7%A3%E7%AE%B1+%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d2-to" onclick="t(this)"><div class="oe">🥡</div><span class="ocat cf2">グルメ</span><div class="on">名護の居酒屋テイクアウト</div><div class="od">沖縄料理を買って宿で宴会</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗30分</span></div></div>
     </div>
-  </div>
+  </div></div>
 </div>
 
 <!-- ==================== DAY 3 ==================== -->
-<div class="day-sec" id="day3">
-  <div class="day-hdr d3">
-    <div><div class="day-n">DAY3</div><div class="day-date">5/8 木</div></div>
-    <div><div class="day-t">北部観光 &mdash; 今帰仁城&やんばる</div><div class="day-st">友人と（最終日）</div></div>
-    <span class="day-hdr-deco">🏯</span>
+<div class="ds" id="day3">
+  <div class="dh d3">
+    <div><div class="dn">DAY3</div><div class="dd">5/8 木</div></div>
+    <div><div class="dt">北部観光 &mdash; 今帰仁城&やんばる</div><div class="dst">友人と（最終日）</div></div>
+    <span class="dh-deco">🏯</span>
   </div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">☀️</span> 朝食</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d3-jisui" onclick="t(this)"><div class="oc-emoji">🍳</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">宿で自炊</div><div class="oc-d">残り食材で</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d3-kyoda" onclick="t(this)"><div class="oc-emoji">🏪</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">道の駅 許田</div><div class="oc-d">おにぎり・天ぷら・サーターアンダギーが激安</div><div class="oc-tags"><span class="ot t-hi">激安</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85+%E8%A8%B1%E7%94%B0" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">☀️</span> 朝食</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d3-jisui" onclick="t(this)"><div class="oe">🍳</div><span class="ocat cf2">グルメ</span><div class="on">宿で自炊</div><div class="od">残り食材で</div><div class="ot"><span class="tg td2">犬OK</span></div></div>
+      <div class="oc" data-id="d3-kyoda" onclick="t(this)"><div class="oe">🏪</div><span class="ocat cf2">グルメ</span><div class="on">道の駅 許田</div><div class="od">天ぷら・サーターアンダギーが激安。移動がてら</div><div class="ot"><span class="tg th">激安</span><span class="tg tcar">🚗25分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85+%E8%A8%B1%E7%94%B0" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌤</span> 午前の観光</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d3-nakijin" onclick="t(this)"><div class="oc-emoji">🏯</div><span class="oc-cat cat-s">観光</span><div class="oc-n">今帰仁城跡</div><div class="oc-d">世界遺産のグスク。犬連れ散歩OK！石垣と海の絶景</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">世界遺産</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E4%BB%8A%E5%B8%B0%E4%BB%81%E5%9F%8E%E8%B7%A1" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-neo" onclick="t(this)"><div class="oc-emoji">🦜</div><span class="oc-cat cat-s">観光</span><div class="oc-n">ネオパークオキナワ</div><div class="oc-d">亜熱帯の動植物園。鳥が放し飼い。名護市内</div><div class="oc-tags"><span class="ot t-yen">1,200円</span><span class="ot t-time">1時間</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8D%E3%82%AA%E3%83%91%E3%83%BC%E3%82%AF%E3%82%AA%E3%82%AD%E3%83%8A%E3%83%AF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-fruit" onclick="t(this)"><div class="oc-emoji">🥭</div><span class="oc-cat cat-s">観光</span><div class="oc-n">OKINAWAフルーツランド</div><div class="oc-d">トロピカルフルーツのテーマパーク。フルーツ試食</div><div class="oc-tags"><span class="ot t-yen">1,200円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=OKINAWA%E3%83%95%E3%83%AB%E3%83%BC%E3%83%84%E3%83%A9%E3%83%B3%E3%83%89" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌤</span> 午前の観光</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d3-nakijin" onclick="t(this)"><div class="oe">🏯</div><span class="ocat cs">観光</span><div class="on">今帰仁城跡</div><div class="od">世界遺産のグスク。犬連れ散歩OK！石垣と海の絶景</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">世界遺産</span><span class="tg tcar">🚗10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E4%BB%8A%E5%B8%B0%E4%BB%81%E5%9F%8E%E8%B7%A1" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-neo" onclick="t(this)"><div class="oe">🦜</div><span class="ocat cs">観光</span><div class="on">ネオパークオキナワ</div><div class="od">亜熱帯の動植物園。鳥が放し飼い</div><div class="ot"><span class="tg ty">1,200円</span><span class="tg tt">1時間</span><span class="tg tcar">🚗25分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8D%E3%82%AA%E3%83%91%E3%83%BC%E3%82%AF%E3%82%AA%E3%82%AD%E3%83%8A%E3%83%AF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-fruit" onclick="t(this)"><div class="oe">🥭</div><span class="ocat cs">観光</span><div class="on">OKINAWAフルーツランド</div><div class="od">トロピカルフルーツのテーマパーク</div><div class="ot"><span class="tg ty">1,200円</span><span class="tg tcar">🚗25分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=OKINAWA%E3%83%95%E3%83%AB%E3%83%BC%E3%83%84%E3%83%A9%E3%83%B3%E3%83%89" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🍽</span> ランチ</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d3-prev" onclick="t(this)"><div class="oc-emoji">🔄</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">前日行けなかったお店</div><div class="oc-d">花人逢・かふーず・蒼蒼家など</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d3-onna" onclick="t(this)"><div class="oc-emoji">🦑</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">おんなの駅 なかゆくい市場</div><div class="oc-d">天ぷら50円〜！惣菜・フルーツ豊富</div><div class="oc-tags"><span class="ot t-hi">激安</span><span class="ot t-yen">~500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E3%82%93%E3%81%AA%E3%81%AE%E9%A7%85+%E3%81%AA%E3%81%8B%E3%82%86%E3%81%8F%E3%81%84%E5%B8%82%E5%A0%B4" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-kanga" onclick="t(this)"><div class="oc-emoji">🍔</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">キャプテンカンガルー</div><div class="oc-d">名護で超人気ハンバーガー。ボリューム満点</div><div class="oc-tags"><span class="ot t-yen">~1,200円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%A3%E3%83%97%E3%83%86%E3%83%B3%E3%82%AB%E3%83%B3%E3%82%AC%E3%83%AB%E3%83%BC+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-manmi" onclick="t(this)"><div class="oc-emoji">🐷</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">島豚七輪焼 満味</div><div class="oc-d">やんばる育ちの島豚を七輪で。名護の人気店</div><div class="oc-tags"><span class="ot t-yen">~1,500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%B3%B6%E8%B1%9A%E4%B8%83%E8%BC%AA%E7%84%BC+%E6%BA%80%E5%91%B3+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🍽</span> ランチ</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d3-prev" onclick="t(this)"><div class="oe">🔄</div><span class="ocat cf2">グルメ</span><div class="on">前日行けなかったお店</div><div class="od">花人逢・かふーず・蒼蒼家など</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗10〜15分</span></div></div>
+      <div class="oc" data-id="d3-kanga" onclick="t(this)"><div class="oe">🍔</div><span class="ocat cf2">グルメ</span><div class="on">キャプテンカンガルー（名護）</div><div class="od">地元で超人気ハンバーガー。ボリューム満点</div><div class="ot"><span class="tg ty">~1,200円</span><span class="tg tcar">🚗30分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%A3%E3%83%97%E3%83%86%E3%83%B3%E3%82%AB%E3%83%B3%E3%82%AC%E3%83%AB%E3%83%BC+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-manmi" onclick="t(this)"><div class="oe">🐷</div><span class="ocat cf2">グルメ</span><div class="on">島豚七輪焼 満味（名護）</div><div class="od">やんばる育ちの島豚を七輪で</div><div class="ot"><span class="tg ty">~1,500円</span><span class="tg tcar">🚗30分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%B3%B6%E8%B1%9A%E4%B8%83%E8%BC%AA%E7%84%BC+%E6%BA%80%E5%91%B3+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-yuiyui" onclick="t(this)"><div class="oe">🏪</div><span class="ocat cf2">グルメ</span><div class="on">道の駅ゆいゆい国頭</div><div class="od">やんばるの特産品。北部ドライブ途中のランチに</div><div class="ot"><span class="tg th">ご当地</span><span class="tg tcar">🚗45分</span></div></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">⛰</span> 午後の観光</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d3-daisekirinzan" onclick="t(this)"><div class="oc-emoji">🪨</div><span class="oc-cat cat-s">観光</span><div class="oc-n">大石林山</div><div class="oc-d">やんばる国立公園。犬連れトレッキング！2億年前の奇岩</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">自然体験</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E7%9F%B3%E6%9E%97%E5%B1%B1+%E6%B2%96%E7%B8%84" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-hedo" onclick="t(this)"><div class="oc-emoji">🧭</div><span class="oc-cat cat-s">観光</span><div class="oc-n">辺戸岬</div><div class="oc-d">沖縄本島最北端！大石林山から近い。断崖絶壁の絶景</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">最北端</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E8%BE%BA%E6%88%B8%E5%B2%AC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-kayauchi" onclick="t(this)"><div class="oc-emoji">🌄</div><span class="oc-cat cat-s">観光</span><div class="oc-n">茅打ちバンタ</div><div class="oc-d">高さ80mの断崖絶壁。やんばるの海を一望</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E8%8C%85%E6%89%93%E3%81%A1%E3%83%90%E3%83%B3%E3%82%BF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-hiji" onclick="t(this)"><div class="oc-emoji">💧</div><span class="oc-cat cat-s">観光</span><div class="oc-n">比地大滝</div><div class="oc-d">やんばるの森を片道40分トレッキング。沖縄本島最大の滝</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-time">往復1.5h</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%AF%94%E5%9C%B0%E5%A4%A7%E6%BB%9D" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-yanbaru-kuina" onclick="t(this)"><div class="oc-emoji">🐦</div><span class="oc-cat cat-s">観光</span><div class="oc-n">ヤンバルクイナ展望台</div><div class="oc-d">巨大なヤンバルクイナ型展望台。やんばるの森を一望</div><div class="oc-tags"><span class="ot t-hi">無料</span><span class="ot t-dog">犬OK</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A4%E3%83%B3%E3%83%90%E3%83%AB%E3%82%AF%E3%82%A4%E3%83%8A%E5%B1%95%E6%9C%9B%E5%8F%B0" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d3-beach" onclick="t(this)"><div class="oc-emoji">🏖</div><span class="oc-cat cat-c">のんびり</span><div class="oc-n">ビーチでのんびり</div><div class="oc-d">犬と一緒に最後の北部を満喫</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">⛰</span> 午後の観光（やんばる方面）</div><div class="bb">
+    <div class="route-note">💡 宿から大石林山まで約60〜80分。大石林山→辺戸岬→茅打ちバンタ→ヤンバルクイナ展望台は全て近接しておりセットで回れます</div>
+    <div class="og">
+      <div class="oc" data-id="d3-dai" onclick="t(this)"><div class="oe">🪨</div><span class="ocat cs">観光</span><div class="on">大石林山</div><div class="od">やんばる国立公園。犬連れトレッキング！2億年前の奇岩</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">自然体験</span><span class="tg tcar">🚗70分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E7%9F%B3%E6%9E%97%E5%B1%B1+%E6%B2%96%E7%B8%84" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-hedo" onclick="t(this)"><div class="oe">🧭</div><span class="ocat cs">観光</span><div class="on">辺戸岬</div><div class="od">沖縄本島最北端！断崖絶壁の絶景</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">最北端</span><span class="tg tcar">🚗大石林山から5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E8%BE%BA%E6%88%B8%E5%B2%AC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-kaya" onclick="t(this)"><div class="oe">🌄</div><span class="ocat cs">観光</span><div class="on">茅打ちバンタ</div><div class="od">高さ80mの断崖絶壁。やんばるの海を一望</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗辺戸岬から10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E8%8C%85%E6%89%93%E3%81%A1%E3%83%90%E3%83%B3%E3%82%BF" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-kuina" onclick="t(this)"><div class="oe">🐦</div><span class="ocat cs">観光</span><div class="on">ヤンバルクイナ展望台</div><div class="od">巨大なヤンバルクイナ型展望台。やんばるの森を一望</div><div class="ot"><span class="tg th">無料</span><span class="tg td2">犬OK</span><span class="tg tcar">🚗辺戸岬から5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A4%E3%83%B3%E3%83%90%E3%83%AB%E3%82%AF%E3%82%A4%E3%83%8A%E5%B1%95%E6%9C%9B%E5%8F%B0" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d3-beach" onclick="t(this)"><div class="oe">🏖</div><span class="ocat cc">のんびり</span><div class="on">ビーチでのんびり</div><div class="od">遠出せず宿の近くで犬と過ごす</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗5〜15分</span></div></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌙</span> ディナー（友人との最後の夜）</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d3-bbq" onclick="t(this)"><div class="oc-emoji">🔥</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">宿でBBQ 最終夜</div><div class="oc-d">残り食材を使い切り！最後の夜を庭で</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d3-steak" onclick="t(this)"><div class="oc-emoji">🥩</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">ステーキ（名護周辺）</div><div class="oc-d">沖縄はステーキ文化！テイクアウト→宿もOK</div><div class="oc-tags"><span class="ot t-hi">沖縄文化</span></div></div>
-        <div class="oc" data-id="d3-gabu" onclick="t(this)"><div class="oc-emoji">🍜</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">我部祖河食堂</div><div class="oc-d">沖縄そばの有名店。ソーキそばが安くてボリューミー</div><div class="oc-tags"><span class="ot t-yen">~750円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%88%91%E9%83%A8%E7%A5%96%E6%B2%B3%E9%A3%9F%E5%A0%82+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌙</span> ディナー（友人との最後の夜）</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d3-bbq" onclick="t(this)"><div class="oe">🔥</div><span class="ocat cf2">グルメ</span><div class="on">宿でBBQ 最終夜</div><div class="od">残り食材を使い切り！最後の夜を庭で</div><div class="ot"><span class="tg td2">犬OK</span></div></div>
+      <div class="oc" data-id="d3-steak" onclick="t(this)"><div class="oe">🥩</div><span class="ocat cf2">グルメ</span><div class="on">ステーキハウス88 美ら海店</div><div class="od">沖縄はステーキ文化！テイクアウト→宿もOK</div><div class="ot"><span class="tg th">沖縄文化</span><span class="tg tcar">🚗5分</span></div></div>
+      <div class="oc" data-id="d3-gabu" onclick="t(this)"><div class="oe">🍜</div><span class="ocat cf2">グルメ</span><div class="on">我部祖河食堂（名護）</div><div class="od">沖縄そばの有名店。ソーキそばが安い</div><div class="ot"><span class="tg ty">~750円</span><span class="tg tcar">🚗30分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E6%88%91%E9%83%A8%E7%A5%96%E6%B2%B3%E9%A3%9F%E5%A0%82+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 </div>
 
 <!-- ==================== DAY 4 ==================== -->
-<div class="day-sec" id="day4">
-  <div class="day-hdr d4">
-    <div><div class="day-n">DAY4</div><div class="day-date">5/9 金</div></div>
-    <div><div class="day-t">のんびりデー &mdash; 恩納村へ</div><div class="day-st">夫婦 + 犬5頭のみ 💑🐕</div></div>
-    <span class="day-hdr-deco">🌴</span>
+<div class="ds" id="day4">
+  <div class="dh d4">
+    <div><div class="dn">DAY4</div><div class="dd">5/9 金</div></div>
+    <div><div class="dt">のんびりデー &mdash; 恩納村へ</div><div class="dst">夫婦 + 犬5頭のみ 💑🐕</div></div>
+    <span class="dh-deco">🌴</span>
   </div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">☀️</span> 朝（確定）</div>
-    <div class="tb-body">
-      <div class="confirmed">
-        <div class="c-item"><div class="c-time">~10:00</div><div class="c-title">Airbnb チェックアウト</div></div>
-        <div class="c-item"><div class="c-time">10:30</div><div class="c-title">のんびり南下 🚗</div><div class="c-desc">途中で寄り道しながら恩納村方面へ</div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">☀️</span> 朝（確定）</div><div class="bb">
+    <div class="cf">
+      <div class="ci"><div class="ct">~10:00</div><div class="cn">Airbnb チェックアウト</div></div>
+      <div class="ci"><div class="ct">10:30</div><div class="cn">のんびり南下 🚗</div><div class="cd">国道58号で恩納村方面へ（約50〜60分）</div></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🏝</span> 途中の寄り道・観光</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d4-manza" onclick="t(this)"><div class="oc-emoji">🌊</div><span class="oc-cat cat-s">観光</span><div class="oc-n">万座毛</div><div class="oc-d">象の鼻のような断崖絶壁。沖縄を代表する景勝地</div><div class="oc-tags"><span class="ot t-yen">100円</span><span class="ot t-dog">犬OK</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%87%E5%BA%A7%E6%AF%9B" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-maeda" onclick="t(this)"><div class="oc-emoji">🤿</div><span class="oc-cat cat-s">観光</span><div class="oc-n">真栄田岬（青の洞窟）</div><div class="oc-d">展望台から海を一望。シュノーケルの名所</div><div class="oc-tags"><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E7%9C%9F%E6%A0%84%E7%94%B0%E5%B2%AC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-zanpa" onclick="t(this)"><div class="oc-emoji">🏮</div><span class="oc-cat cat-s">観光</span><div class="oc-n">残波岬</div><div class="oc-d">白い灯台と断崖。周辺を犬と散歩</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-hi">絶景</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%AE%8B%E6%B3%A2%E5%B2%AC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-ryukyu" onclick="t(this)"><div class="oc-emoji">🏠</div><span class="oc-cat cat-s">観光</span><div class="oc-n">琉球村</div><div class="oc-d">古民家で沖縄文化体験。シーサー作りなど</div><div class="oc-tags"><span class="ot t-yen">2,000円</span><span class="ot t-time">1〜2時間</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E7%90%89%E7%90%83%E6%9D%91+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-tiger" onclick="t(this)"><div class="oc-emoji">🏖</div><span class="oc-cat cat-c">のんびり</span><div class="oc-n">タイガービーチ</div><div class="oc-d">恩納村の綺麗なビーチ。犬と浜辺散歩</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%82%A4%E3%82%AC%E3%83%BC%E3%83%93%E3%83%BC%E3%83%81+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-mission" onclick="t(this)"><div class="oc-emoji">🏖</div><span class="oc-cat cat-c">のんびり</span><div class="oc-n">ミッションビーチ</div><div class="oc-d">プライベート感あるビーチ。犬連れに人気</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-yen">500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%93%E3%83%BC%E3%83%81+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🏝</span> 途中の寄り道（南下ルート上）</div><div class="bb">
+    <div class="route-note">💡 本部→恩納村への南下途中で立ち寄り。万座毛→ビーチ→チェックインの順が効率的</div>
+    <div class="og">
+      <div class="oc" data-id="d4-manza" onclick="t(this)"><div class="oe">🌊</div><span class="ocat cs">観光</span><div class="on">万座毛</div><div class="od">象の鼻のような断崖絶壁。沖縄を代表する景勝地</div><div class="ot"><span class="tg ty">100円</span><span class="tg td2">犬OK</span><span class="tg tcar">🚗宿から50分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%87%E5%BA%A7%E6%AF%9B" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-maeda" onclick="t(this)"><div class="oe">🤿</div><span class="ocat cs">観光</span><div class="on">真栄田岬（青の洞窟）</div><div class="od">展望台から海を一望。シュノーケルの名所</div><div class="ot"><span class="tg th">絶景</span><span class="tg tcar">🚗宿から60分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E7%9C%9F%E6%A0%84%E7%94%B0%E5%B2%AC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-zanpa" onclick="t(this)"><div class="oe">🏮</div><span class="ocat cs">観光</span><div class="on">残波岬</div><div class="od">白い灯台と断崖。犬と散歩</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg th">絶景</span><span class="tg tcar">🚗宿から70分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E6%AE%8B%E6%B3%A2%E5%B2%AC" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-ryukyu" onclick="t(this)"><div class="oe">🏠</div><span class="ocat cs">観光</span><div class="on">琉球村</div><div class="od">古民家で沖縄文化体験。シーサー作りなど</div><div class="ot"><span class="tg ty">2,000円</span><span class="tg tt">1〜2時間</span><span class="tg tcar">🚗宿から60分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E7%90%89%E7%90%83%E6%9D%91+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-okashi" onclick="t(this)"><div class="oe">🍠</div><span class="ocat csh">ショッピング</span><div class="on">御菓子御殿 読谷本店</div><div class="od">紅いもタルト工場見学＆購入。残波岬のすぐ近く</div><div class="ot"><span class="tg th">無料</span><span class="tg tcar">🚗残波岬から5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%BE%A1%E8%8F%93%E5%AD%90%E5%BE%A1%E6%AE%BF+%E8%AA%AD%E8%B0%B7%E6%9C%AC%E5%BA%97" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-onna-eki" onclick="t(this)"><div class="oe">🦑</div><span class="ocat csh">ショッピング</span><div class="on">おんなの駅 なかゆくい市場</div><div class="od">天ぷら50円〜！惣菜・フルーツ豊富</div><div class="ot"><span class="tg th">激安</span><span class="tg tcar">🚗Booyaから10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E3%82%93%E3%81%AA%E3%81%AE%E9%A7%85+%E3%81%AA%E3%81%8B%E3%82%86%E3%81%8F%E3%81%84%E5%B8%82%E5%A0%B4" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🍽</span> ランチ（恩納村エリア）</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d4-enzo" onclick="t(this)"><div class="oc-emoji">🍕</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">ピッツェリア ダ エンゾ</div><div class="oc-d">恩納村の琉球イタリアン。本格ピッツァ</div><div class="oc-tags"><span class="ot t-dog">テラス犬OK</span><span class="ot t-yen">~1,500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%94%E3%83%83%E3%83%84%E3%82%A7%E3%83%AA%E3%82%A2%E3%83%80%E3%82%A8%E3%83%B3%E3%82%BE+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-kaiholo" onclick="t(this)"><div class="oc-emoji">☕</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">カイホロカフェ</div><div class="oc-d">恩納村。マナーベルト着用で利用可</div><div class="oc-tags"><span class="ot t-dog">テラス犬OK</span><span class="ot t-yen">~1,200円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%82%A4%E3%83%9B%E3%83%AD%E3%82%AB%E3%83%95%E3%82%A7+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-trip" onclick="t(this)"><div class="oc-emoji">🥞</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">トリップカフェオキナワ</div><div class="oc-d">ふわふわパンケーキ & ハンバーガー</div><div class="oc-tags"><span class="ot t-dog">テラス犬OK</span><span class="ot t-yen">~1,200円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%AA%E3%83%83%E3%83%97%E3%82%AB%E3%83%95%E3%82%A7%E3%82%AA%E3%82%AD%E3%83%8A%E3%83%AF+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d4-hare" onclick="t(this)"><div class="oc-emoji">🌺</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">ハレアイナ ホア</div><div class="oc-d">犬とBBQもできる！テラス席あり</div><div class="oc-tags"><span class="ot t-dog">犬OK</span><span class="ot t-yen">~1,500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%AC%E3%82%A2%E3%82%A4%E3%83%8A%E3%83%9B%E3%82%A2+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🍽</span> ランチ（恩納村エリア）</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d4-enzo" onclick="t(this)"><div class="oe">🍕</div><span class="ocat cf2">グルメ</span><div class="on">ピッツェリア ダ エンゾ</div><div class="od">恩納村の琉球イタリアン。本格ピッツァ</div><div class="ot"><span class="tg td2">テラス犬OK</span><span class="tg ty">~1,500円</span><span class="tg tcar">🚗Booyaから15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%94%E3%83%83%E3%83%84%E3%82%A7%E3%83%AA%E3%82%A2%E3%83%80%E3%82%A8%E3%83%B3%E3%82%BE+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-kaiholo" onclick="t(this)"><div class="oe">☕</div><span class="ocat cf2">グルメ</span><div class="on">カイホロカフェ</div><div class="od">恩納村。マナーベルト着用で利用可</div><div class="ot"><span class="tg td2">テラス犬OK</span><span class="tg ty">~1,200円</span><span class="tg tcar">🚗Booyaから10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%82%A4%E3%83%9B%E3%83%AD%E3%82%AB%E3%83%95%E3%82%A7+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-trip" onclick="t(this)"><div class="oe">🥞</div><span class="ocat cf2">グルメ</span><div class="on">トリップカフェオキナワ</div><div class="od">ふわふわパンケーキ & ハンバーガー</div><div class="ot"><span class="tg td2">テラス犬OK</span><span class="tg ty">~1,200円</span><span class="tg tcar">🚗Booyaから10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%AA%E3%83%83%E3%83%97%E3%82%AB%E3%83%95%E3%82%A7%E3%82%AA%E3%82%AD%E3%83%8A%E3%83%AF+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-hare" onclick="t(this)"><div class="oe">🌺</div><span class="ocat cf2">グルメ</span><div class="on">ハレアイナ ホア</div><div class="od">犬とBBQもできる！テラス席あり</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg ty">~1,500円</span><span class="tg tcar">🚗Booyaから15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%AC%E3%82%A2%E3%82%A4%E3%83%8A%E3%83%9B%E3%82%A2+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🌙</span> 午後〜夜</div>
-    <div class="tb-body">
-      <div class="confirmed">
-        <div class="c-item"><div class="c-time">15:00</div><div class="c-title">南国ロッジ Booya チェックイン 🌴</div><div class="c-desc">恩納村の高台。海が見える静かな丘の上</div></div>
-      </div>
-      <div class="accom">
-        <div class="accom-t">🌴 南国ロッジ Booya</div>
-        <div class="accom-d">
-          <a href="https://booya7070.wixsite.com/booya" target="_blank" style="color:#2563eb">公式サイト</a> &nbsp;
-          <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E5%9B%BD%E3%83%AD%E3%83%83%E3%82%B8Booya+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" style="color:#2563eb">📍Map</a>
-        </div>
-      </div>
-      <div class="accom">
-        <div class="accom-t">🐾 ペット料金（参考）</div>
-        <div class="accom-d">
-          小型犬 ¥1,000/頭（トイプー×2 + ヨーキー×1 = ¥3,000）<br>
-          大型犬 ¥2,000/頭（オウシー×2 = ¥4,000）※区分要確認<br>
-          朝食 ¥380/人 + モーニングコーヒー無料（8:00-10:30）
-        </div>
-      </div>
-      <div class="opt-h">🍽 ディナー</div>
-      <div class="opt-g">
-        <div class="oc" data-id="d4-booya" onclick="t(this)"><div class="oc-emoji">🍸</div><span class="oc-cat cat-c">のんびり</span><div class="oc-n">Booyaバーラウンジ</div><div class="oc-d">宿でゆっくり。軽食&ドリンク</div><div class="oc-tags"><span class="ot t-dog">宿内</span></div></div>
-        <div class="oc" data-id="d4-to" onclick="t(this)"><div class="oc-emoji">🥡</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">恩納村周辺テイクアウト</div><div class="oc-d">宿で犬とのんびり食べる</div><div class="oc-tags"><span class="ot t-dog">犬OK</span></div></div>
-        <div class="oc" data-id="d4-doka" onclick="t(this)"><div class="oc-emoji">🎨</div><span class="oc-cat cat-s">観光</span><div class="oc-n">土花土花（どかどか）</div><div class="oc-d">恩納村のカフェギャラリー。独特な空間</div><div class="oc-tags"><span class="ot t-hi">雰囲気◎</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%9C%9F%E8%8A%B1%E5%9C%9F%E8%8A%B1+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🌙</span> 午後〜夜</div><div class="bb">
+    <div class="cf"><div class="ci"><div class="ct">15:00</div><div class="cn">南国ロッジ Booya チェックイン 🌴</div><div class="cd">恩納村の高台。海が見える静かな丘の上</div></div></div>
+    <div class="accom"><b>🌴 南国ロッジ Booya</b><div class="ad"><a href="https://booya7070.wixsite.com/booya" target="_blank" style="color:#2563eb">公式サイト</a> &nbsp;<a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E5%9B%BD%E3%83%AD%E3%83%83%E3%82%B8Booya+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" style="color:#2563eb">📍Map</a></div></div>
+    <div class="accom"><b>🐾 ペット料金（参考）</b><div class="ad">小型犬 ¥1,000/頭（トイプー×2 + ヨーキー×1 = ¥3,000）<br>大型犬 ¥2,000/頭（オウシー×2 = ¥4,000）※区分要確認<br>朝食 ¥380/人 + モーニングコーヒー無料（8:00-10:30）</div></div>
+
+    <div class="og" style="margin-top:12px">
+      <div class="oc" data-id="d4-tiger" onclick="t(this)"><div class="oe">🏖</div><span class="ocat cc">のんびり</span><div class="on">タイガービーチ</div><div class="od">恩納村の綺麗なビーチ。チェックイン後の散歩に</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg tcar">🚗Booyaから5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%82%A4%E3%82%AC%E3%83%BC%E3%83%93%E3%83%BC%E3%83%81+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-mission" onclick="t(this)"><div class="oe">🏖</div><span class="ocat cc">のんびり</span><div class="on">ミッションビーチ</div><div class="od">プライベート感。犬連れに人気</div><div class="ot"><span class="tg td2">犬OK</span><span class="tg ty">500円</span><span class="tg tcar">🚗Booyaから5分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%93%E3%83%BC%E3%83%81+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d4-booya" onclick="t(this)"><div class="oe">🍸</div><span class="ocat cc">のんびり</span><div class="on">Booyaバーラウンジ</div><div class="od">宿でゆっくり。軽食&ドリンク</div><div class="ot"><span class="tg td2">宿内</span></div></div>
+      <div class="oc" data-id="d4-to" onclick="t(this)"><div class="oe">🥡</div><span class="ocat cf2">グルメ</span><div class="on">恩納村周辺テイクアウト</div><div class="od">宿で犬とのんびり食べる</div><div class="ot"><span class="tg td2">犬OK</span></div></div>
+      <div class="oc" data-id="d4-doka" onclick="t(this)"><div class="oe">🎨</div><span class="ocat cs">観光</span><div class="on">土花土花（どかどか）</div><div class="od">恩納村のカフェギャラリー。独特な空間</div><div class="ot"><span class="tg th">雰囲気◎</span><span class="tg tcar">🚗Booyaから10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%9C%9F%E8%8A%B1%E5%9C%9F%E8%8A%B1+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 </div>
 
 <!-- ==================== DAY 5 ==================== -->
-<div class="day-sec" id="day5">
-  <div class="day-hdr d5">
-    <div><div class="day-n">DAY5</div><div class="day-date">5/10 土</div></div>
-    <div><div class="day-t">最終日 &mdash; 南下して帰路</div><div class="day-st">15:35 那覇空港発</div></div>
-    <span class="day-hdr-deco">✈️</span>
+<div class="ds" id="day5">
+  <div class="dh d5">
+    <div><div class="dn">DAY5</div><div class="dd">5/10 土</div></div>
+    <div><div class="dt">最終日 &mdash; 南下して帰路</div><div class="dst">15:35 那覇空港発</div></div>
+    <span class="dh-deco">✈️</span>
   </div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">☀️</span> 朝（確定）</div>
-    <div class="tb-body">
-      <div class="confirmed">
-        <div class="c-item"><div class="c-time">8:00</div><div class="c-title">Booya朝食 ☕</div><div class="c-desc">アメリカンブレックファスト ¥380/人 + コーヒー無料</div></div>
-        <div class="c-item"><div class="c-time">9:30</div><div class="c-title">チェックアウト → 南下開始 🚗</div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">☀️</span> 朝（確定）</div><div class="bb">
+    <div class="cf">
+      <div class="ci"><div class="ct">8:00</div><div class="cn">Booya朝食 ☕</div><div class="cd">アメリカンブレックファスト ¥380/人 + コーヒー無料</div></div>
+      <div class="ci"><div class="ct">9:30</div><div class="cn">チェックアウト → 南下開始 🚗</div></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🏝</span> 途中の寄り道</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d5-american" onclick="t(this)"><div class="oc-emoji">🇺🇸</div><span class="oc-cat cat-s">観光</span><div class="oc-n">アメリカンビレッジ（北谷）</div><div class="oc-d">異国情緒のショッピングエリア。テラスカフェ多め</div><div class="oc-tags"><span class="ot t-dog">犬散歩OK</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8+%E5%8C%97%E8%B0%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-umikaji" onclick="t(this)"><div class="oc-emoji">🤍</div><span class="oc-cat cat-s">観光</span><div class="oc-n">瀬長島ウミカジテラス</div><div class="oc-d">空港近く。白い建物が並ぶおしゃれスポット</div><div class="oc-tags"><span class="ot t-dog">屋外犬OK</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-shuri" onclick="t(this)"><div class="oc-emoji">🏰</div><span class="oc-cat cat-s">観光</span><div class="oc-n">首里城公園</div><div class="oc-d">復元中の世界遺産。無料エリアも広い</div><div class="oc-tags"><span class="ot t-hi">世界遺産</span><span class="ot t-warn">犬NG(館内)</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E9%A6%96%E9%87%8C%E5%9F%8E%E5%85%AC%E5%9C%92" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-naminoue" onclick="t(this)"><div class="oc-emoji">⛩</div><span class="oc-cat cat-s">観光</span><div class="oc-n">波上宮 & 波の上ビーチ</div><div class="oc-d">崖上の神社＆那覇唯一のビーチ。空港から近い</div><div class="oc-tags"><span class="ot t-hi">無料</span><span class="ot t-time">30分</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-kokusai" onclick="t(this)"><div class="oc-emoji">🛍</div><span class="oc-cat cat-sh">ショッピング</span><div class="oc-n">国際通り散策</div><div class="oc-d">那覇のメインストリート。お土産探しに</div><div class="oc-tags"><span class="ot t-time">30分〜</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-ashibi" onclick="t(this)"><div class="oc-emoji">🏬</div><span class="oc-cat cat-sh">ショッピング</span><div class="oc-n">あしびなーアウトレット</div><div class="oc-d">空港近くのアウトレットモール。ブランド品が安い</div><div class="oc-tags"><span class="ot t-time">30分〜</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%82%E3%81%97%E3%81%B3%E3%81%AA%E3%83%BC+%E8%B1%8A%E8%A6%8B%E5%9F%8E" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🏝</span> 途中の寄り道</div><div class="bb">
+    <div class="notice"><strong>⚠ 時間制約</strong> 13:30にレンタカー返却（OTS臨空豊崎）→ 15:35フライト。寄り道は<strong>2〜3箇所が限界</strong>です</div>
+    <div class="og">
+      <div class="oc" data-id="d5-american" onclick="t(this)"><div class="oe">🇺🇸</div><span class="ocat cs">観光</span><div class="on">アメリカンビレッジ（北谷）</div><div class="od">異国情緒のショッピングエリア。テラスカフェ多め</div><div class="ot"><span class="tg td2">犬散歩OK</span><span class="tg tcar">🚗Booyaから30分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8+%E5%8C%97%E8%B0%B7" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d5-nami" onclick="t(this)"><div class="oe">⛩</div><span class="ocat cs">観光</span><div class="on">波上宮 & 波の上ビーチ</div><div class="od">崖上の神社＆那覇唯一のビーチ</div><div class="ot"><span class="tg th">無料</span><span class="tg tt">20〜30分</span><span class="tg tcar">🚗空港から10分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d5-kokusai" onclick="t(this)"><div class="oe">🛍</div><span class="ocat csh">ショッピング</span><div class="on">国際通り散策</div><div class="od">那覇のメインストリート。お土産探しに</div><div class="ot"><span class="tg tt">30〜60分</span><span class="tg tcar">🚗空港から15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d5-umikaji" onclick="t(this)"><div class="oe">🤍</div><span class="ocat cs">観光</span><div class="on">瀬長島ウミカジテラス</div><div class="od">白い建物のおしゃれスポット。飛行機の離発着も見える</div><div class="ot"><span class="tg td2">屋外犬OK</span><span class="tg tcar">🚗空港から15分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d5-shuri" onclick="t(this)"><div class="oe">🏰</div><span class="ocat cs">観光</span><div class="on">首里城公園</div><div class="od">復元中の世界遺産。見学に60〜90分必要</div><div class="ot"><span class="tg th">世界遺産</span><span class="tg tw">時間に余裕あれば</span><span class="tg tcar">🚗空港から20分</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E9%A6%96%E9%87%8C%E5%9F%8E%E5%85%AC%E5%9C%92" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">🍽</span> ランチ（那覇〜南部エリア）</div>
-    <div class="tb-body">
-      <div class="opt-g">
-        <div class="oc" data-id="d5-goya" onclick="t(this)"><div class="oc-emoji">🍤</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">呉屋てんぷら屋</div><div class="oc-d">国際通り裏。天ぷら&サーターアンダギー各50円！</div><div class="oc-tags"><span class="ot t-hi">1970年創業</span><span class="ot t-yen">~300円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E5%91%89%E5%B1%8B%E3%81%A6%E3%82%93%E3%81%B7%E3%82%89%E5%B1%8B+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-umi-f" onclick="t(this)"><div class="oc-emoji">🌮</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">ウミカジテラス内の店舗</div><div class="oc-d">タコス・ハンバーガーなど多数。空港に近い</div><div class="oc-tags"><span class="ot t-dog">屋外犬OK</span><span class="ot t-yen">~1,000円</span></div></div>
-        <div class="oc" data-id="d5-pork" onclick="t(this)"><div class="oc-emoji">🍙</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">ポークたまごおにぎり本店</div><div class="oc-d">沖縄B級グルメの代表格</div><div class="oc-tags"><span class="ot t-hi">B級グルメ</span><span class="ot t-yen">~400円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%82%AF%E3%81%9F%E3%81%BE%E3%81%94%E3%81%8A%E3%81%AB%E3%81%8E%E3%82%8A%E6%9C%AC%E5%BA%97+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-        <div class="oc" data-id="d5-makishi" onclick="t(this)"><div class="oc-emoji">🐟</div><span class="oc-cat cat-f">グルメ</span><div class="oc-n">第一牧志公設市場</div><div class="oc-d">1階で鮮魚を買い、2階で調理してもらう。沖縄の台所</div><div class="oc-tags"><span class="ot t-hi">沖縄文化</span><span class="ot t-yen">~1,500円</span></div><a class="oc-map" href="https://www.google.com/maps/search/?api=1&query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">🍽</span> ランチ（那覇〜南部エリア）</div><div class="bb">
+    <div class="og">
+      <div class="oc" data-id="d5-goya" onclick="t(this)"><div class="oe">🍤</div><span class="ocat cf2">グルメ</span><div class="on">呉屋てんぷら屋</div><div class="od">国際通り裏。天ぷら&サーターアンダギー各50円！</div><div class="ot"><span class="tg th">1970年創業</span><span class="tg ty">~300円</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E5%91%89%E5%B1%8B%E3%81%A6%E3%82%93%E3%81%B7%E3%82%89%E5%B1%8B+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d5-umi-f" onclick="t(this)"><div class="oe">🌮</div><span class="ocat cf2">グルメ</span><div class="on">ウミカジテラス内の店舗</div><div class="od">タコス・ハンバーガーなど。空港に近い</div><div class="ot"><span class="tg td2">屋外犬OK</span><span class="tg ty">~1,000円</span></div></div>
+      <div class="oc" data-id="d5-pork" onclick="t(this)"><div class="oe">🍙</div><span class="ocat cf2">グルメ</span><div class="on">ポークたまごおにぎり本店</div><div class="od">沖縄B級グルメの代表格</div><div class="ot"><span class="tg th">B級グルメ</span><span class="tg ty">~400円</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%82%AF%E3%81%9F%E3%81%BE%E3%81%94%E3%81%8A%E3%81%AB%E3%81%8E%E3%82%8A%E6%9C%AC%E5%BA%97+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
+      <div class="oc" data-id="d5-makishi" onclick="t(this)"><div class="oe">🐟</div><span class="ocat cf2">グルメ</span><div class="on">第一牧志公設市場</div><div class="od">1階で鮮魚を買い2階で調理。沖縄の台所</div><div class="ot"><span class="tg th">沖縄文化</span><span class="tg ty">~1,500円</span></div><a class="om" href="https://www.google.com/maps/search/?api=1&query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" onclick="event.stopPropagation()">📍Map</a></div>
     </div>
-  </div>
+  </div></div>
 
-  <div class="tb">
-    <div class="tb-hdr"><span class="tb-i">✈️</span> 帰路（確定）</div>
-    <div class="tb-body">
-      <div class="confirmed">
-        <div class="c-item"><div class="c-time">13:30</div><div class="c-title">OTS臨空豊崎営業所でレンタカー返却</div></div>
-        <div class="c-item"><div class="c-time">~14:15</div><div class="c-title">送迎で那覇空港へ</div></div>
-        <div class="c-item"><div class="c-time">15:35</div><div class="c-title">那覇空港発 ✈️ → セントレアへ</div></div>
-      </div>
+  <div class="bl"><div class="bh"><span class="bi">✈️</span> 帰路（確定）</div><div class="bb">
+    <div class="cf">
+      <div class="ci"><div class="ct">13:30</div><div class="cn">OTS臨空豊崎でレンタカー返却</div></div>
+      <div class="ci"><div class="ct">~14:15</div><div class="cn">送迎で那覇空港へ</div></div>
+      <div class="ci"><div class="ct">15:35</div><div class="cn">那覇空港発 ✈️ → セントレアへ</div></div>
     </div>
-  </div>
+  </div></div>
 </div>
 
 <!-- ==================== INFO ==================== -->
-<div class="info-box">
+<div class="ib">
   <h3>🐾 犬5頭の旅行 注意メモ</h3>
   <ul>
-    <li>OTSレンタカーのペット同乗ルールを事前確認（ケージ・シート保護など）</li>
+    <li>OTSレンタカーのペット同乗ルール事前確認（ケージ・シート保護等）</li>
     <li>5月の沖縄は気温28〜30℃。<strong>車内放置は絶対NG</strong></li>
-    <li>水・ペットシーツ・マナーベルトは多めに持参</li>
+    <li>水・ペットシーツ・マナーベルト多めに持参</li>
     <li>犬種: トイプードル×2 / ヨークシャーテリア×1 / オーストラリアンシェパード×2</li>
     <li>海洋博公園は<strong>小型犬のみ</strong>OK。オウシーは入園不可</li>
     <li>レストランは事前に電話確認がベスト（特に大型犬）</li>
   </ul>
 </div>
-
-<div class="info-box">
+<div class="ib">
   <h3>🛒 沖縄ローカルスーパーのコツ</h3>
   <ul>
     <li>「<strong>かねひで</strong>」「<strong>サンエー</strong>」が安くておすすめ</li>
@@ -605,11 +436,10 @@ body{
     <li>恩納村には大きなスーパーが少ない → 名護か浦添で買い出しを</li>
   </ul>
 </div>
-
-<div class="info-box">
+<div class="ib">
   <h3>🏨 宿泊まとめ</h3>
   <ul>
-    <li><strong>5/6〜8（3泊）</strong>: <a href="https://www.airbnb.jp/rooms/48153557" target="_blank">Airbnb 国頭郡の一軒家</a> &mdash; 3BR / BBQ / プール</li>
+    <li><strong>5/6〜8（3泊）</strong>: <a href="https://www.airbnb.jp/rooms/48153557" target="_blank">Airbnb 本部/今帰仁エリアの一軒家</a> &mdash; 3BR / BBQ / プール</li>
     <li><strong>5/9（1泊）</strong>: <a href="https://booya7070.wixsite.com/booya" target="_blank">南国ロッジ Booya</a> &mdash; 恩納村 / ペットOK / 朝食¥380</li>
   </ul>
 </div>
@@ -617,37 +447,20 @@ body{
 <div class="footer">Made with ☀️ for OKINAWA TRIP 2025</div>
 </div>
 
-<!-- SELECTION BAR -->
-<div class="sel-bar" id="selBar">
-  <div class="sc">✓ <span id="selC">0</span> 件選択中</div>
-  <button class="sel-r" onclick="resetAll()">リセット</button>
-</div>
+<div class="sb" id="selBar"><div>✓ <span id="selC">0</span> 件選択中</div><button class="sr" onclick="resetAll()">リセット</button></div>
 
 <script>
 const SK='okinawa-sel';
 function gs(){try{return JSON.parse(localStorage.getItem(SK))||[]}catch{return[]}}
 function ss(a){localStorage.setItem(SK,JSON.stringify(a))}
-function t(el){
-  const id=el.dataset.id;if(!id)return;
-  let s=gs();
-  if(s.includes(id)){s=s.filter(x=>x!==id);el.classList.remove('selected')}
-  else{s.push(id);el.classList.add('selected')}
-  ss(s);ub();
-}
+function t(el){const id=el.dataset.id;if(!id)return;let s=gs();if(s.includes(id)){s=s.filter(x=>x!==id);el.classList.remove('selected')}else{s.push(id);el.classList.add('selected')}ss(s);ub()}
 function resetAll(){localStorage.removeItem(SK);document.querySelectorAll('.oc.selected').forEach(c=>c.classList.remove('selected'));ub()}
 function ub(){const s=gs();document.getElementById('selC').textContent=s.length;document.getElementById('selBar').classList.toggle('visible',s.length>0)}
 function restore(){gs().forEach(id=>{const el=document.querySelector(`.oc[data-id="${id}"]`);if(el)el.classList.add('selected')});ub()}
 function scrollToDay(n){const el=document.getElementById('day'+n);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
 function setupObs(){
-  const secs=document.querySelectorAll('.day-sec'),tabs=document.querySelectorAll('.tab-btn');
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){
-      const n=e.target.id.replace('day','');
-      tabs.forEach(t=>t.classList.remove('active'));
-      const at=document.querySelector(`.tab-btn[data-day="${n}"]`);
-      if(at){at.classList.add('active');at.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}
-    }})
-  },{rootMargin:'-80px 0px -60% 0px',threshold:0});
+  const secs=document.querySelectorAll('.ds'),tabs=document.querySelectorAll('.tab button');
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const n=e.target.id.replace('day','');tabs.forEach(t=>t.classList.remove('active'));const at=document.querySelector(`.tab button[data-day="${n}"]`);if(at){at.classList.add('active');at.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}}})},{rootMargin:'-80px 0px -60% 0px',threshold:0});
   secs.forEach(s=>obs.observe(s));
 }
 document.addEventListener('DOMContentLoaded',()=>{restore();setupObs()});
