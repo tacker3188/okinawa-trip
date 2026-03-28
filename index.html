@@ -115,6 +115,35 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
 .ib a{color:#2563eb;text-decoration:none}
 .ib a:hover{text-decoration:underline}
 
+/* COUNTDOWN */
+.countdown{margin-top:14px;font-size:.9em;font-weight:700;letter-spacing:.04em}
+.countdown .cd-num{font-size:1.6em;font-weight:900}
+.countdown .cd-now{background:rgba(255,255,255,.2);border-radius:12px;padding:6px 16px;display:inline-block}
+
+/* CHECKLIST */
+.cl-section{margin:20px 0;background:var(--card);border-radius:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:18px}
+.cl-section h3{font-size:.92em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.cl-cat{font-size:.78em;font-weight:700;color:var(--mute);margin:10px 0 6px;padding-left:2px}
+.cl-cat:first-of-type{margin-top:0}
+.cl-item{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:.83em}
+.cl-item input[type="checkbox"]{width:18px;height:18px;accent-color:#0ea5e9;cursor:pointer;flex-shrink:0}
+.cl-item label{cursor:pointer;line-height:1.4}
+.cl-item.checked label{text-decoration:line-through;opacity:.5}
+.cl-progress{background:#e2e8f0;border-radius:8px;height:8px;margin-top:12px;overflow:hidden}
+.cl-progress-bar{background:linear-gradient(90deg,#0ea5e9,#38bdf8);height:100%;border-radius:8px;transition:width .3s}
+.cl-stats{font-size:.72em;color:var(--mute);margin-top:4px;text-align:right}
+
+/* EMERGENCY */
+.em-section{margin:20px 0;background:linear-gradient(135deg,#fef2f2,#fff1f2);border-radius:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:18px;border:1px solid #fecaca}
+.em-section h3{font-size:.92em;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:#dc2626}
+.em-cat{font-size:.75em;font-weight:700;color:#991b1b;margin:10px 0 4px}
+.em-cat:first-of-type{margin-top:0}
+.em-item{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.82em}
+.em-item .em-icon{font-size:1.1em;flex-shrink:0}
+.em-item a{color:#2563eb;text-decoration:none;font-weight:600}
+.em-item a:hover{text-decoration:underline}
+.em-note{font-size:.75em;color:var(--mute);margin-top:8px;padding:8px 10px;background:rgba(255,255,255,.6);border-radius:8px}
+
 /* FOOTER / BAR */
 .footer{text-align:center;padding:24px 20px;font-size:.75em;color:var(--mute)}
 @media(max-width:400px){.hero h1{font-size:1.4em}.container{padding:0 8px 40px}}
@@ -132,6 +161,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
   <div class="sub">5.6 Tue &ndash; 5.10 Sat</div>
   <div class="dates">4泊5日</div>
   <div class="members"><span>名古屋組(夫婦) + 大阪組(母娘) + 沖縄組(夫婦)</span><span>|</span><span>🐩犬8頭（名古屋5 / 大阪2 / 沖縄1）</span></div>
+  <div class="countdown" id="countdown"></div>
   <div class="ww">
     <svg class="w1" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C150,35 350,0 600,20 C850,40 1050,5 1200,20 L1200,40 L0,40Z" fill="#f5f0e8"/></svg>
     <svg class="w2" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,25 C200,5 400,35 600,15 C800,0 1000,30 1200,10 L1200,40 L0,40Z" fill="#f5f0e8"/></svg>
@@ -449,6 +479,83 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
   </ul>
 </div>
 
+<!-- ==================== CHECKLIST ==================== -->
+<div class="cl-section" id="checklist">
+  <h3>✅ 持ち物チェックリスト</h3>
+  <div class="cl-cat">📄 書類・貴重品</div>
+  <div class="cl-item" data-key="cl-ticket"><input type="checkbox" id="cl-ticket"><label for="cl-ticket">航空券（eチケット）</label></div>
+  <div class="cl-item" data-key="cl-id"><input type="checkbox" id="cl-id"><label for="cl-id">身分証明書</label></div>
+  <div class="cl-item" data-key="cl-wallet"><input type="checkbox" id="cl-wallet"><label for="cl-wallet">財布・現金・クレジットカード</label></div>
+  <div class="cl-item" data-key="cl-rental"><input type="checkbox" id="cl-rental"><label for="cl-rental">レンタカー予約確認書</label></div>
+  <div class="cl-item" data-key="cl-airbnb"><input type="checkbox" id="cl-airbnb"><label for="cl-airbnb">Airbnb / Booya 予約確認書</label></div>
+
+  <div class="cl-cat">👕 衣類・身の回り</div>
+  <div class="cl-item" data-key="cl-clothes"><input type="checkbox" id="cl-clothes"><label for="cl-clothes">着替え（4泊分）</label></div>
+  <div class="cl-item" data-key="cl-swim"><input type="checkbox" id="cl-swim"><label for="cl-swim">水着・ラッシュガード</label></div>
+  <div class="cl-item" data-key="cl-sandal"><input type="checkbox" id="cl-sandal"><label for="cl-sandal">サンダル・ビーチシューズ</label></div>
+  <div class="cl-item" data-key="cl-sun"><input type="checkbox" id="cl-sun"><label for="cl-sun">日焼け止め・サングラス・帽子</label></div>
+  <div class="cl-item" data-key="cl-rain"><input type="checkbox" id="cl-rain"><label for="cl-rain">折りたたみ傘 / レインコート</label></div>
+  <div class="cl-item" data-key="cl-towel"><input type="checkbox" id="cl-towel"><label for="cl-towel">タオル（ビーチ用）</label></div>
+
+  <div class="cl-cat">📱 電子機器</div>
+  <div class="cl-item" data-key="cl-phone"><input type="checkbox" id="cl-phone"><label for="cl-phone">スマホ・充電器</label></div>
+  <div class="cl-item" data-key="cl-battery"><input type="checkbox" id="cl-battery"><label for="cl-battery">モバイルバッテリー</label></div>
+  <div class="cl-item" data-key="cl-camera"><input type="checkbox" id="cl-camera"><label for="cl-camera">カメラ（防水ケース）</label></div>
+
+  <div class="cl-cat">🐾 犬グッズ</div>
+  <div class="cl-item" data-key="cl-food"><input type="checkbox" id="cl-food"><label for="cl-food">ドッグフード（5日分）</label></div>
+  <div class="cl-item" data-key="cl-water"><input type="checkbox" id="cl-water"><label for="cl-water">携帯水飲み・水ボトル</label></div>
+  <div class="cl-item" data-key="cl-leash"><input type="checkbox" id="cl-leash"><label for="cl-leash">リード・ハーネス</label></div>
+  <div class="cl-item" data-key="cl-cage"><input type="checkbox" id="cl-cage"><label for="cl-cage">ケージ・クレート（飛行機用）</label></div>
+  <div class="cl-item" data-key="cl-sheet"><input type="checkbox" id="cl-sheet"><label for="cl-sheet">ペットシーツ（多めに）</label></div>
+  <div class="cl-item" data-key="cl-belt"><input type="checkbox" id="cl-belt"><label for="cl-belt">マナーベルト / マナーパンツ</label></div>
+  <div class="cl-item" data-key="cl-poop"><input type="checkbox" id="cl-poop"><label for="cl-poop">うんち袋・消臭スプレー</label></div>
+  <div class="cl-item" data-key="cl-cool"><input type="checkbox" id="cl-cool"><label for="cl-cool">クールマット・冷却ベスト（暑さ対策）</label></div>
+  <div class="cl-item" data-key="cl-vaccine"><input type="checkbox" id="cl-vaccine"><label for="cl-vaccine">狂犬病・ワクチン接種証明書</label></div>
+  <div class="cl-item" data-key="cl-med"><input type="checkbox" id="cl-med"><label for="cl-med">常備薬・フィラリア薬</label></div>
+  <div class="cl-item" data-key="cl-car"><input type="checkbox" id="cl-car"><label for="cl-car">車内シート保護カバー</label></div>
+
+  <div class="cl-cat">🧴 その他</div>
+  <div class="cl-item" data-key="cl-medicine"><input type="checkbox" id="cl-medicine"><label for="cl-medicine">常備薬（人間用）</label></div>
+  <div class="cl-item" data-key="cl-insect"><input type="checkbox" id="cl-insect"><label for="cl-insect">虫除けスプレー</label></div>
+  <div class="cl-item" data-key="cl-bag"><input type="checkbox" id="cl-bag"><label for="cl-bag">エコバッグ・ビニール袋</label></div>
+  <div class="cl-item" data-key="cl-cooler"><input type="checkbox" id="cl-cooler"><label for="cl-cooler">クーラーボックス（BBQ用）</label></div>
+
+  <div class="cl-progress"><div class="cl-progress-bar" id="clBar" style="width:0%"></div></div>
+  <div class="cl-stats" id="clStats">0 / 0 完了</div>
+</div>
+
+<!-- ==================== EMERGENCY ==================== -->
+<div class="em-section">
+  <h3>🚨 緊急連絡先・お役立ち情報</h3>
+
+  <div class="em-cat">🌤 天気予報</div>
+  <div class="em-item"><span class="em-icon">☀️</span><a href="https://tenki.jp/week/50/" target="_blank">沖縄 週間天気予報（tenki.jp）</a></div>
+  <div class="em-item"><span class="em-icon">🌊</span><a href="https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=471000" target="_blank">気象庁 沖縄本島地方</a></div>
+
+  <div class="em-cat">🏥 動物病院（24時間 / 夜間対応）</div>
+  <div class="em-item"><span class="em-icon">🐾</span><a href="tel:098-936-2550">ちゅら動物病院（北谷）- 098-936-2550</a></div>
+  <div class="em-item"><span class="em-icon">🐾</span><a href="tel:098-877-0330">マルコ動物病院（浦添・夜間対応）- 098-877-0330</a></div>
+  <div class="em-item"><span class="em-icon">🐾</span><a href="tel:098-987-8911">しんざと動物病院（本部町）- 098-987-8911</a></div>
+  <div class="em-note">⚠ 営業時間・夜間対応は事前に電話確認を。GW明けの診療体制にも注意</div>
+
+  <div class="em-cat">🏥 人間の病院</div>
+  <div class="em-item"><span class="em-icon">🚑</span><a href="tel:119">救急（119）</a></div>
+  <div class="em-item"><span class="em-icon">📞</span><a href="tel:098-889-1199">沖縄県 救急医療情報センター - 098-889-1199</a></div>
+
+  <div class="em-cat">🚗 レンタカー・交通</div>
+  <div class="em-item"><span class="em-icon">🚗</span><a href="tel:098-856-8926">OTSレンタカー - 098-856-8926</a></div>
+  <div class="em-item"><span class="em-icon">🛣</span><a href="tel:0570-024-024">JAFロードサービス - 0570-024-024</a></div>
+
+  <div class="em-cat">🏠 宿泊先</div>
+  <div class="em-item"><span class="em-icon">🏡</span>Airbnb（5/6-8）: アプリ内メッセージでホストに連絡</div>
+  <div class="em-item"><span class="em-icon">🌴</span><a href="https://booya7070.wixsite.com/booya" target="_blank">南国ロッジ Booya（5/9）- 公式サイト</a></div>
+
+  <div class="em-cat">🔢 その他</div>
+  <div class="em-item"><span class="em-icon">🚔</span><a href="tel:110">警察（110）</a></div>
+  <div class="em-item"><span class="em-icon">🌀</span><a href="tel:098-866-2143">沖縄県 防災危機管理課 - 098-866-2143</a></div>
+</div>
+
 <div class="footer">Made with ☀️ for OKINAWA TRIP 2025</div>
 </div>
 
@@ -459,7 +566,61 @@ function setupObs(){
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const n=e.target.id.replace('day','');tabs.forEach(t=>t.classList.remove('active'));const at=document.querySelector(`.tab button[data-day="${n}"]`);if(at){at.classList.add('active');at.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}}})},{rootMargin:'-80px 0px -60% 0px',threshold:0});
   secs.forEach(s=>obs.observe(s));
 }
-document.addEventListener('DOMContentLoaded',()=>{setupObs()});
+document.addEventListener('DOMContentLoaded',()=>{setupObs();setupCountdown();setupChecklist()});
+
+function setupCountdown(){
+  const el=document.getElementById('countdown');if(!el)return;
+  const tripStart=new Date('2025-05-06T00:00:00+09:00');
+  const tripEnd=new Date('2025-05-10T23:59:59+09:00');
+  function update(){
+    const now=new Date();
+    const jst=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Tokyo'}));
+    if(jst<tripStart){
+      const diff=tripStart-jst;
+      const days=Math.floor(diff/(1000*60*60*24));
+      const hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+      const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+      if(days>0)el.innerHTML='旅行まであと <span class="cd-num">'+days+'</span> 日 <span class="cd-num">'+hrs+'</span> 時間';
+      else el.innerHTML='旅行まであと <span class="cd-num">'+hrs+'</span> 時間 <span class="cd-num">'+mins+'</span> 分';
+    }else if(jst<=tripEnd){
+      const dayNum=Math.floor((jst-tripStart)/(1000*60*60*24))+1;
+      el.innerHTML='<span class="cd-now">🌺 旅行 '+dayNum+' 日目！楽しんで！</span>';
+    }else{
+      el.innerHTML='<span class="cd-now">🌺 素敵な思い出をありがとう！</span>';
+    }
+  }
+  update();setInterval(update,60000);
+}
+
+function setupChecklist(){
+  const items=document.querySelectorAll('.cl-item');
+  const bar=document.getElementById('clBar');
+  const stats=document.getElementById('clStats');
+  function updateProgress(){
+    const total=items.length;
+    let done=0;
+    items.forEach(item=>{
+      const cb=item.querySelector('input');
+      if(cb&&cb.checked){done++;item.classList.add('checked')}
+      else{item.classList.remove('checked')}
+    });
+    const pct=total?Math.round(done/total*100):0;
+    if(bar)bar.style.width=pct+'%';
+    if(stats)stats.textContent=done+' / '+total+' 完了（'+pct+'%）';
+  }
+  items.forEach(item=>{
+    const key=item.dataset.key;
+    const cb=item.querySelector('input');
+    if(!cb||!key)return;
+    const saved=localStorage.getItem('okt-'+key);
+    if(saved==='1')cb.checked=true;
+    cb.addEventListener('change',()=>{
+      localStorage.setItem('okt-'+key,cb.checked?'1':'0');
+      updateProgress();
+    });
+  });
+  updateProgress();
+}
 </script>
 </body>
 </html>
