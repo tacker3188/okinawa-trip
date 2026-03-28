@@ -5,794 +5,931 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>沖縄旅行 2025.5.6-10</title>
 <style>
-  :root {
-    --sky: #0ea5e9;
-    --ocean: #0284c7;
-    --sand: #fef3c7;
-    --coral: #fb7185;
-    --green: #22c55e;
-    --gray: #64748b;
-    --bg: #f0f9ff;
-    --card: #ffffff;
-    --text: #1e293b;
-    --text-light: #64748b;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    padding-bottom: 60px;
-  }
-  .hero {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 50%, #0c4a6e 100%);
-    color: white;
-    padding: 40px 20px 30px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background: var(--bg);
-    border-radius: 50% 50% 0 0;
-  }
-  .hero h1 { font-size: 1.6em; margin-bottom: 4px; letter-spacing: 0.05em; }
-  .hero .sub { font-size: 0.95em; opacity: 0.9; }
-  .hero .dates { font-size: 0.85em; opacity: 0.75; margin-top: 6px; }
-  .hero .members {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(255,255,255,0.15); border-radius: 20px;
-    padding: 6px 14px; margin-top: 12px; font-size: 0.82em;
-  }
-  .container { max-width: 640px; margin: 0 auto; padding: 0 12px; }
+:root {
+  --day1: #f97316; --day1-light: #fff7ed; --day1-border: #fed7aa;
+  --day2: #0ea5e9; --day2-light: #f0f9ff; --day2-border: #bae6fd;
+  --day3: #22c55e; --day3-light: #f0fdf4; --day3-border: #bbf7d0;
+  --day4: #ec4899; --day4-light: #fdf2f8; --day4-border: #fbcfe8;
+  --day5: #64748b; --day5-light: #f8fafc; --day5-border: #e2e8f0;
+  --bg: #f0f9ff;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --selected-bg: #dbeafe;
+  --selected-border: #3b82f6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;
+  padding-bottom:40px;
+  -webkit-tap-highlight-color:transparent;
+}
 
-  /* Day Section */
-  .day {
-    margin: 20px 0;
-    background: var(--card);
-    border-radius: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    overflow: hidden;
-  }
-  .day-header {
-    display: flex; align-items: center; gap: 12px;
-    padding: 16px 18px;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-  }
-  .day-header::after {
-    content: '\25BC';
-    position: absolute;
-    right: 18px;
-    font-size: 0.7em;
-    color: var(--text-light);
-    transition: transform 0.2s;
-  }
-  .day.collapsed .day-header::after { transform: rotate(-90deg); }
-  .day-num {
-    background: var(--ocean);
-    color: white;
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    font-weight: 700; line-height: 1.1;
-    flex-shrink: 0;
-  }
-  .day-num .m { font-size: 0.65em; opacity: 0.8; }
-  .day-num .d { font-size: 1.2em; }
-  .day-title { font-size: 1.05em; font-weight: 700; }
-  .day-subtitle { font-size: 0.8em; color: var(--text-light); }
-  .day-body { padding: 0 18px 18px; }
-  .day.collapsed .day-body { display: none; }
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(160deg,#0ea5e9 0%,#0284c7 35%,#0369a1 60%,#075985 100%);
+  color:#fff;padding:48px 20px 60px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero h1{font-size:1.8em;letter-spacing:0.08em;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.hero .sub{font-size:1em;opacity:0.92;margin-top:4px;font-weight:500;}
+.hero .dates{font-size:0.85em;opacity:0.7;margin-top:2px;}
+.hero .members{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);
+  border-radius:24px;padding:8px 18px;margin-top:14px;font-size:0.82em;
+  border:1px solid rgba(255,255,255,0.2);
+}
+/* wave */
+.wave-container{position:absolute;bottom:-1px;left:0;right:0;overflow:hidden;line-height:0;}
+.wave-container svg{display:block;width:100%;height:40px;}
+.wave1{animation:waveMove 8s ease-in-out infinite;}
+.wave2{animation:waveMove 6s ease-in-out infinite reverse;opacity:0.5;position:absolute;bottom:0;left:0;right:0;}
+@keyframes waveMove{
+  0%,100%{transform:translateX(0);}
+  50%{transform:translateX(-25px);}
+}
 
-  /* Timeline */
-  .timeline { position: relative; padding-left: 24px; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 5px; top: 8px; bottom: 8px;
-    width: 2px;
-    background: #e2e8f0;
-    border-radius: 2px;
-  }
-  .tl-item {
-    position: relative;
-    margin-bottom: 18px;
-  }
-  .tl-item:last-child { margin-bottom: 0; }
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -22px; top: 8px;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--sky);
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px var(--sky);
-  }
-  .tl-time {
-    font-size: 0.78em;
-    color: var(--ocean);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  .tl-title { font-weight: 700; font-size: 0.95em; margin: 2px 0; }
-  .tl-desc { font-size: 0.82em; color: var(--text-light); }
+/* ===== TAB BAR ===== */
+.tab-bar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid #e2e8f0;
+  overflow-x:auto;overflow-y:hidden;
+  display:flex;gap:0;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{
+  flex:1 0 auto;min-width:20%;
+  padding:10px 16px;text-align:center;
+  font-size:0.78em;font-weight:700;
+  color:var(--text-light);
+  border:none;background:none;cursor:pointer;
+  border-bottom:3px solid transparent;
+  transition:all 0.2s;white-space:nowrap;
+  position:relative;
+}
+.tab-btn .tab-day{font-size:1.1em;display:block;}
+.tab-btn .tab-info{font-size:0.85em;font-weight:500;opacity:0.7;}
+.tab-btn.active{color:var(--text);border-bottom-color:var(--day1);}
+.tab-btn[data-day="1"].active{border-bottom-color:var(--day1);}
+.tab-btn[data-day="2"].active{border-bottom-color:var(--day2);}
+.tab-btn[data-day="3"].active{border-bottom-color:var(--day3);}
+.tab-btn[data-day="4"].active{border-bottom-color:var(--day4);}
+.tab-btn[data-day="5"].active{border-bottom-color:var(--day5);}
 
-  /* Tags */
-  .tag {
-    display: inline-block;
-    font-size: 0.7em;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: 600;
-    margin: 2px 2px 2px 0;
-    vertical-align: middle;
-  }
-  .tag-dog { background: #fef3c7; color: #92400e; }
-  .tag-map { background: #dbeafe; color: #1e40af; }
-  .tag-food { background: #fce7f3; color: #9d174d; }
-  .tag-spot { background: #d1fae5; color: #065f46; }
-  .tag-warn { background: #fee2e2; color: #991b1b; }
-  .tag-shop { background: #ede9fe; color: #5b21b6; }
+/* ===== CONTAINER ===== */
+.container{max-width:680px;margin:0 auto;padding:0 12px;}
 
-  /* Map Link */
-  .map-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    color: #2563eb;
-    text-decoration: none;
-    font-size: 0.8em;
-    font-weight: 600;
-    padding: 3px 0;
-  }
-  .map-link:hover { text-decoration: underline; }
-  .map-link::before { content: '\ud83d\udccd'; font-size: 0.9em; }
+/* ===== DAY SECTION ===== */
+.day-section{margin:28px 0;scroll-margin-top:70px;}
+.day-section-header{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 0 12px;
+}
+.day-badge{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:800;color:#fff;line-height:1.1;flex-shrink:0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.day-badge .dm{font-size:0.6em;opacity:0.85;}
+.day-badge .dd{font-size:1.3em;}
+.day-badge-1{background:linear-gradient(135deg,#f97316,#ea580c);}
+.day-badge-2{background:linear-gradient(135deg,#0ea5e9,#0284c7);}
+.day-badge-3{background:linear-gradient(135deg,#22c55e,#16a34a);}
+.day-badge-4{background:linear-gradient(135deg,#ec4899,#db2777);}
+.day-badge-5{background:linear-gradient(135deg,#64748b,#475569);}
+.day-meta .day-title{font-size:1.1em;font-weight:800;}
+.day-meta .day-subtitle{font-size:0.82em;color:var(--text-light);}
 
-  /* Food Section */
-  .food-section {
-    margin-top: 16px;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 14px;
-  }
-  .food-heading {
-    font-size: 0.85em;
-    font-weight: 700;
-    color: var(--ocean);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .food-card {
-    background: #f8fafc;
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    border-left: 3px solid var(--coral);
-  }
-  .food-card.bbq { border-left-color: #f59e0b; }
-  .food-card.takeout { border-left-color: #8b5cf6; }
-  .food-name {
-    font-weight: 700;
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .food-detail { font-size: 0.8em; color: var(--text-light); margin-top: 2px; }
-  .food-price {
-    font-size: 0.78em;
-    color: var(--coral);
-    font-weight: 700;
-  }
+/* ===== TIME BLOCK ===== */
+.time-block{margin:16px 0;}
+.time-block-header{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.82em;font-weight:700;color:var(--text-light);
+  margin-bottom:10px;padding:4px 0;
+  border-bottom:1px dashed #e2e8f0;
+}
+.time-block-header .tb-icon{font-size:1.2em;}
 
-  /* Accommodation */
-  .accom {
-    background: linear-gradient(135deg, #eff6ff, #f0f9ff);
-    border-radius: 12px;
-    padding: 14px;
-    margin: 12px 0;
-    border: 1px solid #bfdbfe;
-  }
-  .accom-title {
-    font-weight: 700;
-    font-size: 0.9em;
-    margin-bottom: 4px;
-  }
-  .accom-detail { font-size: 0.8em; color: var(--text-light); }
-  .accom a { color: #2563eb; text-decoration: none; }
-  .accom a:hover { text-decoration: underline; }
+/* ===== SAMPLE TIMELINE ===== */
+.sample-schedule{
+  background:rgba(0,0,0,0.02);border-radius:12px;
+  padding:14px 16px;margin-bottom:16px;position:relative;
+  border:1px dashed #cbd5e1;
+}
+.sample-label{
+  position:absolute;top:-10px;left:12px;
+  background:var(--bg);padding:0 8px;
+  font-size:0.7em;color:var(--text-light);font-weight:600;
+  letter-spacing:0.04em;
+}
+.tl{position:relative;padding-left:22px;}
+.tl::before{
+  content:'';position:absolute;left:4px;top:6px;bottom:6px;
+  width:2px;background:#cbd5e1;border-radius:2px;
+}
+.tl-item{position:relative;margin-bottom:12px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{
+  content:'';position:absolute;left:-20px;top:7px;
+  width:8px;height:8px;border-radius:50%;
+  background:#94a3b8;border:2px solid #fff;box-shadow:0 0 0 2px #94a3b8;
+}
+.tl-time{font-size:0.75em;color:var(--text-light);font-weight:700;}
+.tl-title{font-weight:700;font-size:0.9em;margin:1px 0;}
+.tl-desc{font-size:0.8em;color:var(--text-light);}
 
-  /* Notice */
-  .notice {
-    background: #fef3c7;
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin: 12px 0;
-    font-size: 0.82em;
-    border-left: 3px solid #f59e0b;
-  }
-  .notice strong { color: #92400e; }
+/* ===== OPTION CARDS ===== */
+.options-heading{
+  font-size:0.85em;font-weight:700;margin:18px 0 10px;
+  display:flex;align-items:center;gap:6px;
+}
+.options-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+@media(max-width:480px){.options-grid{grid-template-columns:1fr;}}
+.opt-card{
+  background:var(--card);border-radius:14px;
+  padding:14px;cursor:pointer;user-select:none;
+  border:2px solid #e2e8f0;
+  transition:all 0.2s ease;
+  position:relative;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.opt-card:hover{border-color:#94a3b8;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.opt-card:active{transform:scale(0.98);}
+.opt-card.selected{
+  border-color:var(--selected-border);
+  background:var(--selected-bg);
+  box-shadow:0 2px 12px rgba(59,130,246,0.15);
+}
+.opt-card.selected::after{
+  content:'\2713';position:absolute;top:8px;right:10px;
+  background:#3b82f6;color:#fff;
+  width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7em;font-weight:800;
+}
+.opt-card .opt-cat{
+  font-size:0.65em;font-weight:600;
+  padding:2px 8px;border-radius:8px;
+  display:inline-block;margin-bottom:6px;
+}
+.cat-spot{background:#d1fae5;color:#065f46;}
+.cat-food{background:#fce7f3;color:#9d174d;}
+.cat-shop{background:#ede9fe;color:#5b21b6;}
+.cat-chill{background:#fef3c7;color:#92400e;}
+.opt-card .opt-name{font-weight:700;font-size:0.9em;margin-bottom:4px;padding-right:24px;}
+.opt-card .opt-desc{font-size:0.78em;color:var(--text-light);margin-bottom:6px;}
+.opt-card .opt-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;}
+.opt-tag{
+  font-size:0.65em;padding:2px 7px;border-radius:8px;
+  font-weight:600;white-space:nowrap;
+}
+.tag-dog{background:#fef3c7;color:#92400e;}
+.tag-budget{background:#dbeafe;color:#1e40af;}
+.tag-time{background:#f1f5f9;color:#475569;}
+.tag-warn{background:#fee2e2;color:#991b1b;}
+.tag-highlight{background:#d1fae5;color:#065f46;}
+.opt-card .opt-map{
+  display:inline-flex;align-items:center;gap:3px;
+  color:#2563eb;text-decoration:none;font-size:0.75em;font-weight:600;
+}
+.opt-card .opt-map:hover{text-decoration:underline;}
 
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.75em;
-    color: var(--text-light);
-  }
+/* ===== NOTICE ===== */
+.notice{
+  background:#fef3c7;border-radius:12px;padding:14px 16px;
+  margin:12px 0;font-size:0.82em;border-left:4px solid #f59e0b;
+}
+.notice strong{color:#92400e;}
 
-  /* Section heading */
-  .section-title {
-    font-size: 0.9em;
-    font-weight: 700;
-    color: var(--ocean);
-    padding: 18px 18px 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+/* ===== INFO BOX (bottom) ===== */
+.info-box{
+  margin:24px 0;background:var(--card);border-radius:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);padding:20px;
+}
+.info-box h3{font-size:0.95em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.info-box ul{list-style:none;font-size:0.85em;}
+.info-box li{padding:5px 0 5px 18px;position:relative;}
+.info-box li::before{content:'\25B8';position:absolute;left:0;color:#0ea5e9;}
+.info-box a{color:#2563eb;text-decoration:none;}
+.info-box a:hover{text-decoration:underline;}
 
-  /* Info box */
-  .info-box {
-    margin: 20px 0;
-    background: var(--card);
-    border-radius: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    padding: 18px;
-  }
-  .info-box h3 {
-    font-size: 0.95em;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .info-box ul {
-    list-style: none;
-    font-size: 0.85em;
-  }
-  .info-box li {
-    padding: 4px 0;
-    padding-left: 16px;
-    position: relative;
-  }
-  .info-box li::before {
-    content: '\25B8';
-    position: absolute;
-    left: 0;
-    color: var(--sky);
-  }
+/* ===== ACCOMMODATION ===== */
+.accom{
+  background:linear-gradient(135deg,#eff6ff,#f0f9ff);
+  border-radius:14px;padding:16px;margin:14px 0;
+  border:1px solid #bfdbfe;
+}
+.accom-title{font-weight:700;font-size:0.92em;margin-bottom:6px;}
+.accom-detail{font-size:0.82em;color:var(--text-light);}
 
-  /* Responsive */
-  @media (max-width: 400px) {
-    .hero h1 { font-size: 1.3em; }
-    .container { padding: 0 8px; }
-    .day-body { padding: 0 14px 14px; }
-  }
+/* ===== FOOTER ===== */
+.footer{text-align:center;padding:30px 20px;font-size:0.75em;color:var(--text-light);}
+
+/* ===== SELECTION COUNTER ===== */
+.selection-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(30,41,59,0.92);backdrop-filter:blur(8px);
+  color:#fff;padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:0.82em;font-weight:600;
+  transform:translateY(100%);transition:transform 0.3s ease;
+  z-index:200;
+}
+.selection-bar.visible{transform:translateY(0);}
+.selection-bar .sel-count{display:flex;align-items:center;gap:6px;}
+.sel-reset{
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);
+  color:#fff;padding:5px 14px;border-radius:8px;
+  font-size:0.85em;cursor:pointer;font-weight:600;
+}
+.sel-reset:hover{background:rgba(255,255,255,0.25);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:400px){
+  .hero h1{font-size:1.4em;}
+  .container{padding:0 8px;}
+  .hero{padding:36px 16px 50px;}
+}
 </style>
 </head>
 <body>
 
-<!-- Hero -->
+<!-- ===== HERO ===== -->
 <div class="hero">
   <h1>OKINAWA TRIP 2025</h1>
-  <div class="sub">5.6 Tue - 5.10 Sat</div>
-  <div class="dates">4 nights / 5 days</div>
+  <div class="sub">5.6 Tue &ndash; 5.10 Sat</div>
+  <div class="dates">4泊5日</div>
   <div class="members">
     <span>夫婦 + 友人</span>
     <span>|</span>
-    <span>トイプー2 / ヨーキー1 / オーシェパ2</span>
+    <span>トイプー2 / ヨーキー1 / オウシー2</span>
   </div>
+  <div class="wave-container">
+    <svg class="wave1" viewBox="0 0 1200 40" preserveAspectRatio="none">
+      <path d="M0,20 C150,35 350,0 600,20 C850,40 1050,5 1200,20 L1200,40 L0,40Z" fill="#f0f9ff"/>
+    </svg>
+    <svg class="wave2" viewBox="0 0 1200 40" preserveAspectRatio="none">
+      <path d="M0,25 C200,5 400,35 600,15 C800,0 1000,30 1200,10 L1200,40 L0,40Z" fill="#f0f9ff"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== TAB BAR ===== -->
+<div class="tab-bar" id="tabBar">
+  <button class="tab-btn active" data-day="1" onclick="scrollToDay(1)">
+    <span class="tab-day">DAY1</span>
+    <span class="tab-info">5/6 火 到着</span>
+  </button>
+  <button class="tab-btn" data-day="2" onclick="scrollToDay(2)">
+    <span class="tab-day">DAY2</span>
+    <span class="tab-info">5/7 水 美ら海</span>
+  </button>
+  <button class="tab-btn" data-day="3" onclick="scrollToDay(3)">
+    <span class="tab-day">DAY3</span>
+    <span class="tab-info">5/8 木 やんばる</span>
+  </button>
+  <button class="tab-btn" data-day="4" onclick="scrollToDay(4)">
+    <span class="tab-day">DAY4</span>
+    <span class="tab-info">5/9 金 のんびり</span>
+  </button>
+  <button class="tab-btn" data-day="5" onclick="scrollToDay(5)">
+    <span class="tab-day">DAY5</span>
+    <span class="tab-info">5/10 土 帰路</span>
+  </button>
 </div>
 
 <div class="container">
 
-<!-- ===================== DAY 1 ===================== -->
-<div class="day" id="day1">
-  <div class="day-header" onclick="toggleDay('day1')">
-    <div class="day-num"><span class="m">5/</span><span class="d">6</span></div>
-    <div>
+<!-- ============================================================ -->
+<!--                         DAY 1                                -->
+<!-- ============================================================ -->
+<div class="day-section" id="day1">
+  <div class="day-section-header">
+    <div class="day-badge day-badge-1"><span class="dm">5/</span><span class="dd">6</span></div>
+    <div class="day-meta">
       <div class="day-title">到着日 &mdash; 那覇 → 北部へ</div>
       <div class="day-subtitle">火曜 / 友人合流</div>
     </div>
   </div>
-  <div class="day-body">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">8:20</div>
-        <div class="tl-title">セントレア発 ✈</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">10:40</div>
-        <div class="tl-title">那覇空港着</div>
-        <div class="tl-desc">到着後、OTS送迎バスで臨空豊崎営業所へ</div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=OTS%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC+%E8%87%A8%E7%A9%BA%E8%B1%8A%E5%B4%8E%E5%96%B6%E6%A5%AD%E6%89%80" target="_blank">OTS臨空豊崎営業所</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">~11:30</div>
-        <div class="tl-title">レンタカー受取・出発</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">~12:00</div>
-        <div class="tl-title">A&W 牧港店でランチ 🍔</div>
-        <div class="tl-desc">沖縄限定バーガーチェーン！ルートビアおかわり自由。ドライブイン形式で車からも注文OK</div>
-        <span class="tag tag-food">~800円/人</span>
-        <span class="tag tag-dog">テラス・車内OK</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=A%26W+%E7%89%A7%E6%B8%AF%E5%BA%97+%E6%B2%96%E7%B8%84" target="_blank">A&W 牧港店</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">~13:00</div>
-        <div class="tl-title">買い出し 🛒</div>
-        <div class="tl-desc">BBQ食材・飲み物・朝食用の食材を調達</div>
-        <div style="margin-top:6px">
-          <div class="food-card" style="border-left-color:#8b5cf6">
-            <div class="food-name">サンエー経塚シティ <span class="tag tag-shop">大型</span></div>
-            <div class="food-detail">浦添市。A&W牧港店から近い。品揃え豊富</div>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E7%B5%8C%E5%A1%9A%E3%82%B7%E3%83%86%E3%82%A3" target="_blank">Map</a>
-          </div>
-          <div class="food-card" style="border-left-color:#8b5cf6">
-            <div class="food-name">イオン名護店 <span class="tag tag-shop">大型</span></div>
-            <div class="food-detail">北部に入ってから寄るなら。BBQ食材充実</div>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E5%90%8D%E8%AD%B7%E5%BA%97" target="_blank">Map</a>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">~13:30</div>
-        <div class="tl-title">高速で北部へ 🚗</div>
-        <div class="tl-desc">沖縄自動車道 → 許田IC → 宿へ（約1〜1.5時間）</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">~15:00</div>
-        <div class="tl-title">Airbnb チェックイン 🏠</div>
-        <div class="tl-desc">一軒家・3ベッドルーム・庭&プール・BBQ設備・駐車2台</div>
-        <a class="map-link" href="https://www.airbnb.jp/rooms/48153557" target="_blank">Airbnb詳細</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">夕方</div>
-        <div class="tl-title">宿周辺を犬と散歩 🐕</div>
-        <div class="tl-desc">荷解き・ワンコのストレス発散</div>
+
+  <!-- 朝〜昼 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">&#9728;&#65039;</span> 朝〜昼</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">8:20</div><div class="tl-title">セントレア発 ✈</div></div>
+        <div class="tl-item"><div class="tl-time">10:40</div><div class="tl-title">那覇空港着</div><div class="tl-desc">到着後、OTS送迎バスで臨空豊崎営業所へ</div></div>
+        <div class="tl-item"><div class="tl-time">~11:30</div><div class="tl-title">レンタカー受取・出発</div></div>
       </div>
     </div>
-
-    <div class="food-section">
-      <div class="food-heading">🍽 ディナーの選択肢</div>
-      <div class="food-card bbq">
-        <div class="food-name">宿でBBQ 🔥 <span class="tag tag-dog">犬OK</span></div>
-        <div class="food-detail">買い出し食材で。友人とワイワイ＆犬も庭で自由に</div>
+    <div class="options-heading">🍽 ランチの選択肢</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d1-aw" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">A&W 牧港店 🍔</div>
+        <div class="opt-desc">沖縄限定バーガー！ルートビアおかわり自由。ドライブイン形式</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">テラス・車内OK</span>
+          <span class="opt-tag tag-budget">~800円/人</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=A%26W+%E7%89%A7%E6%B8%AF%E5%BA%97+%E6%B2%96%E7%B8%84" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="food-card takeout">
-        <div class="food-name">名護の大衆食堂でテイクアウト</div>
-        <div class="food-detail">沖縄料理を買って宿で宴会スタイル</div>
+    </div>
+  </div>
+
+  <!-- 昼〜午後 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 午後</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">~13:00</div><div class="tl-title">買い出し（BBQ食材・飲み物）</div></div>
+        <div class="tl-item"><div class="tl-time">~13:30</div><div class="tl-title">高速で北部へ 🚗</div><div class="tl-desc">沖縄自動車道 → 許田IC → 宿へ（約1〜1.5時間）</div></div>
+        <div class="tl-item"><div class="tl-time">~15:00</div><div class="tl-title">Airbnb チェックイン 🏠</div><div class="tl-desc">一軒家・3BR・庭&プール・BBQ設備・駐車2台</div></div>
+      </div>
+    </div>
+    <div class="options-heading">🛒 買い出しスポット</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d1-sanei" onclick="toggleCard(this)">
+        <span class="opt-cat cat-shop">ショッピング 🛒</span>
+        <div class="opt-name">サンエー経塚シティ</div>
+        <div class="opt-desc">浦添市。A&W牧港店から近い。品揃え豊富</div>
+        <div class="opt-tags"><span class="opt-tag tag-highlight">大型</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E7%B5%8C%E5%A1%9A%E3%82%B7%E3%83%86%E3%82%A3" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+      <div class="opt-card" data-id="d1-aeon" onclick="toggleCard(this)">
+        <span class="opt-cat cat-shop">ショッピング 🛒</span>
+        <div class="opt-name">イオン名護店</div>
+        <div class="opt-desc">北部に入ってから寄るなら。BBQ食材充実</div>
+        <div class="opt-tags"><span class="opt-tag tag-highlight">大型</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E5%90%8D%E8%AD%B7%E5%BA%97" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 夕方〜夜 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌙</span> 夕方〜夜</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">夕方</div><div class="tl-title">宿周辺を犬と散歩 🐕</div><div class="tl-desc">荷解き・ワンコのストレス発散</div></div>
+      </div>
+    </div>
+    <div class="options-heading">🍽 ディナーの選択肢</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d1-bbq" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">宿でBBQ 🔥</div>
+        <div class="opt-desc">買い出し食材で。友人とワイワイ＆犬も庭で自由に</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
+      </div>
+      <div class="opt-card" data-id="d1-takeout" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">名護の大衆食堂テイクアウト</div>
+        <div class="opt-desc">沖縄料理を買って宿で宴会スタイル</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===================== DAY 2 ===================== -->
-<div class="day" id="day2">
-  <div class="day-header" onclick="toggleDay('day2')">
-    <div class="day-num"><span class="m">5/</span><span class="d">7</span></div>
-    <div>
+<!-- ============================================================ -->
+<!--                         DAY 2                                -->
+<!-- ============================================================ -->
+<div class="day-section" id="day2">
+  <div class="day-section-header">
+    <div class="day-badge day-badge-2"><span class="dm">5/</span><span class="dd">7</span></div>
+    <div class="day-meta">
       <div class="day-title">北部観光 &mdash; 美ら海&古宇利島</div>
       <div class="day-subtitle">水曜 / 友人と</div>
     </div>
   </div>
-  <div class="day-body">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">8:00</div>
-        <div class="tl-title">朝食（宿で自炊）</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">9:30</div>
-        <div class="tl-title">備瀬のフクギ並木 🌳</div>
-        <div class="tl-desc">約2万本のフクギのトンネル。犬と一緒にのんびり散歩。海岸にも出られる</div>
-        <span class="tag tag-dog">犬OK</span>
-        <span class="tag tag-spot">絶景</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank">備瀬のフクギ並木</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">10:30</div>
-        <div class="tl-title">美ら海水族館 / 海洋博公園 🐠</div>
-        <div class="tl-desc">ジンベエザメの巨大水槽は必見！</div>
-        <span class="tag tag-spot">世界級</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank">美ら海水族館</a>
 
-        <div class="notice">
-          <strong>⚠ 犬の制限あり</strong><br>
-          水族館の館内: ペット不可<br>
-          海洋博公園の屋外: <strong>小型犬のみ</strong>リード付きでOK<br>
-          → トイプー2 &amp; ヨーキー1 = OK / オーシェパ2 = NG<br><br>
-          <strong>対策:</strong> 友人と交代制で見学。一組が水族館、もう一組が犬と公園散歩。<br>
-          5月は暑いので車内放置は絶対NG！
+  <!-- 朝 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">&#9728;&#65039;</span> 朝</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">8:00</div><div class="tl-title">朝食（宿で自炊）</div></div>
+        <div class="tl-item"><div class="tl-time">9:30</div><div class="tl-title">備瀬のフクギ並木 🌳</div><div class="tl-desc">約2万本のフクギのトンネル。犬と散歩OK。海岸にも出られる</div></div>
+      </div>
+    </div>
+    <div class="options-heading">🏝 午前の観光</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d2-fukugi" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">備瀬のフクギ並木</div>
+        <div class="opt-desc">2万本のフクギトンネル。犬と海岸散歩も</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">犬OK</span>
+          <span class="opt-tag tag-highlight">絶景</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+      <div class="opt-card" data-id="d2-churaumi" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">美ら海水族館 🐠</div>
+        <div class="opt-desc">ジンベエザメの巨大水槽は必見！</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-highlight">世界級</span>
+          <span class="opt-tag tag-warn">犬制限あり</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+    </div>
+    <div class="notice">
+      <strong>⚠ 美ら海水族館 犬の制限</strong><br>
+      館内: ペット不可 / 海洋博公園の屋外: <strong>小型犬のみ</strong>リード付きOK<br>
+      → トイプー2 &amp; ヨーキー1 = OK / オウシー2 = NG<br>
+      <strong>対策:</strong> 友人と交代制で見学。一組が水族館、もう一組が犬と公園散歩。5月は暑いので車内放置は絶対NG！
+    </div>
+  </div>
+
+  <!-- 昼 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 昼</div>
+    <div class="options-heading">🍽 ランチの選択肢</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d2-kajinhou" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">花人逢（かじんほう）</div>
+        <div class="opt-desc">本部町の高台から海を一望。自家製ピザが名物。超人気店</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">テラス犬OK</span>
+          <span class="opt-tag tag-budget">~1,200円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+      <div class="opt-card" data-id="d2-fukurubi" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">Cafe フクルビ（古宇利島）</div>
+        <div class="opt-desc">古宇利島のカフェ。店主が犬好きでとても親切</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">犬OK</span>
+          <span class="opt-tag tag-budget">~1,000円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%95%E3%82%A7%E3%83%95%E3%82%AF%E3%83%AB%E3%83%93+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+      <div class="opt-card" data-id="d2-kafuzu" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">かふーず</div>
+        <div class="opt-desc">本部港を見下ろす絶景。地元食材の薬膳料理</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">全犬種OK</span>
+          <span class="opt-tag tag-budget">~1,000円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%B5%E3%83%BC%E3%81%9A+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+      <div class="opt-card" data-id="d2-sousouka" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">蒼蒼家（そうそうか）</div>
+        <div class="opt-desc">美ら海水族館まで車10分。自家製ピザ</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">全犬種・店内もOK</span>
+          <span class="opt-tag tag-budget">~1,000円</span>
         </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">13:00</div>
-        <div class="tl-title">ランチタイム 🍽</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">14:30</div>
-        <div class="tl-title">古宇利島ドライブ 🏝</div>
-        <div class="tl-desc">古宇利大橋を渡る絶景ドライブ！ハートロック、ビーチ散歩。犬と一緒に浜辺へ</div>
-        <span class="tag tag-dog">犬OK</span>
-        <span class="tag tag-spot">絶景</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%A4%A7%E6%A9%8B" target="_blank">古宇利大橋</a>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%BC%E3%83%88%E3%83%AD%E3%83%83%E3%82%AF+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank">ハートロック</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">16:30</div>
-        <div class="tl-title">宿に戻る</div>
-        <div class="tl-desc">犬と庭・プールでのんびり</div>
+      <div class="opt-card" data-id="d2-kishimoto" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">きしもと食堂</div>
+        <div class="opt-desc">創業100年超の沖縄そば超有名店。テイクアウト→外で食べる手も</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-highlight">名店</span>
+          <span class="opt-tag tag-budget">~700円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
     </div>
+  </div>
 
-    <div class="food-section">
-      <div class="food-heading">🍽 ランチの選択肢</div>
-      <div class="food-card">
-        <div class="food-name">花人逢（かじんほう） <span class="tag tag-dog">テラス犬OK</span></div>
-        <div class="food-detail">本部町の高台から海を一望。自家製ピザが名物。超人気店なので早めに！</div>
-        <span class="food-price">~1,200円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank">Map</a>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Cafe フクルビ（古宇利島） <span class="tag tag-dog">犬OK</span></div>
-        <div class="food-detail">古宇利島のカフェ。店主が犬好きでとても親切</div>
-        <span class="food-price">~1,000円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%95%E3%82%A7%E3%83%95%E3%82%AF%E3%83%AB%E3%83%93+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank">Map</a>
-      </div>
-      <div class="food-card">
-        <div class="food-name">かふーず <span class="tag tag-dog">全犬種OK</span></div>
-        <div class="food-detail">本部港を見下ろす絶景。地元食材の薬膳料理</div>
-        <span class="food-price">~1,000円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%B5%E3%83%BC%E3%81%9A+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank">Map</a>
-      </div>
-      <div class="food-card">
-        <div class="food-name">蒼蒼家（そうそうか） <span class="tag tag-dog">全犬種・店内もOK</span></div>
-        <div class="food-detail">美ら海水族館まで車10分。自家製ピザ</div>
-        <span class="food-price">~1,000円</span>
-      </div>
-      <div class="food-card">
-        <div class="food-name">きしもと食堂 <span class="tag tag-food">名店</span></div>
-        <div class="food-detail">創業100年超の沖縄そばの超有名店。テイクアウト→外で食べる手も</div>
-        <span class="food-price">~700円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82+%E6%9C%AC%E9%83%A8%E7%94%BA" target="_blank">Map</a>
+  <!-- 午後 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 午後</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">14:30</div><div class="tl-title">古宇利島ドライブ 🏝</div><div class="tl-desc">古宇利大橋の絶景ドライブ。ハートロック、ビーチ散歩</div></div>
+        <div class="tl-item"><div class="tl-time">16:30</div><div class="tl-title">宿に戻る</div><div class="tl-desc">犬と庭・プールでのんびり</div></div>
       </div>
     </div>
+    <div class="options-heading">🏝 午後の観光</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d2-kouri" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">古宇利島ドライブ</div>
+        <div class="opt-desc">古宇利大橋を渡る絶景！ハートロック、ビーチ散歩。犬と浜辺へ</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">犬OK</span>
+          <span class="opt-tag tag-highlight">絶景</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%A4%A7%E6%A9%8B" target="_blank" onclick="event.stopPropagation()">📍 古宇利大橋</a>
+        &nbsp;
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%BC%E3%83%88%E3%83%AD%E3%83%83%E3%82%AF+%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6" target="_blank" onclick="event.stopPropagation()">📍 ハートロック</a>
+      </div>
+    </div>
+  </div>
 
-    <div class="food-section">
-      <div class="food-heading">🍽 ディナーの選択肢</div>
-      <div class="food-card bbq">
-        <div class="food-name">宿でBBQ 🔥 <span class="tag tag-dog">犬OK</span></div>
-        <div class="food-detail">友人とワイワイ第2夜</div>
+  <!-- 夜 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌙</span> ディナー</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d2-bbq" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">宿でBBQ 🔥 第2夜</div>
+        <div class="opt-desc">友人とワイワイ！</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
       </div>
-      <div class="food-card">
-        <div class="food-name">森の巣箱（今帰仁村） <span class="tag tag-dog">犬OK</span></div>
-        <div class="food-detail">テラスに広い庭。犬はロングリードで走り回れる。海の見えるカフェ</div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E3%81%AE%E5%B7%A3%E7%AE%B1+%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91" target="_blank">Map</a>
+      <div class="opt-card" data-id="d2-morinosubako" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">森の巣箱（今帰仁村）</div>
+        <div class="opt-desc">テラスに広い庭。犬はロングリードで走り回れる。海の見えるカフェ</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E3%81%AE%E5%B7%A3%E7%AE%B1+%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="food-card takeout">
-        <div class="food-name">名護の居酒屋でテイクアウト</div>
-        <div class="food-detail">沖縄料理を買って宿で宴会</div>
+      <div class="opt-card" data-id="d2-takeout" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">名護の居酒屋テイクアウト</div>
+        <div class="opt-desc">沖縄料理を買って宿で宴会</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===================== DAY 3 ===================== -->
-<div class="day" id="day3">
-  <div class="day-header" onclick="toggleDay('day3')">
-    <div class="day-num"><span class="m">5/</span><span class="d">8</span></div>
-    <div>
+<!-- ============================================================ -->
+<!--                         DAY 3                                -->
+<!-- ============================================================ -->
+<div class="day-section" id="day3">
+  <div class="day-section-header">
+    <div class="day-badge day-badge-3"><span class="dm">5/</span><span class="dd">8</span></div>
+    <div class="day-meta">
       <div class="day-title">北部観光 &mdash; 今帰仁城&やんばる</div>
       <div class="day-subtitle">木曜 / 友人と（最終日）</div>
     </div>
   </div>
-  <div class="day-body">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">8:00</div>
-        <div class="tl-title">朝食</div>
+
+  <!-- 朝 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">&#9728;&#65039;</span> 朝</div>
+    <div class="options-heading">🍽 朝食の選択肢</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d3-jisui" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">宿で自炊</div>
+        <div class="opt-desc">残り食材で</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">9:30</div>
-        <div class="tl-title">今帰仁城跡 🏯</div>
-        <div class="tl-desc">世界遺産のグスク。犬連れ散歩OK！石垣と海の絶景パノラマ</div>
-        <span class="tag tag-dog">犬OK</span>
-        <span class="tag tag-spot">世界遺産</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E4%BB%8A%E5%B8%B0%E4%BB%81%E5%9F%8E%E8%B7%A1" target="_blank">今帰仁城跡</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">11:30</div>
-        <div class="tl-title">ランチタイム 🍽</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">13:30</div>
-        <div class="tl-title">大石林山 ⛰</div>
-        <div class="tl-desc">やんばる国立公園。犬連れトレッキングOK！2億年前の奇岩と亜熱帯の森</div>
-        <span class="tag tag-dog">犬OK</span>
-        <span class="tag tag-spot">自然体験</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E7%9F%B3%E6%9E%97%E5%B1%B1+%E6%B2%96%E7%B8%84" target="_blank">大石林山</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">16:00</div>
-        <div class="tl-title">ビーチ散歩 or カフェ休憩</div>
-        <div class="tl-desc">犬と一緒に最後の北部を満喫</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">18:30</div>
-        <div class="tl-title">友人との最後の夜 🌅</div>
+      <div class="opt-card" data-id="d3-kyoda" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">道の駅 許田</div>
+        <div class="opt-desc">おにぎり・天ぷら・サーターアンダギーが安くて美味しい。移動がてら</div>
+        <div class="opt-tags"><span class="opt-tag tag-highlight">激安</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85+%E8%A8%B1%E7%94%B0" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
     </div>
+  </div>
 
-    <div class="food-section">
-      <div class="food-heading">🍽 朝食の選択肢</div>
-      <div class="food-card">
-        <div class="food-name">宿で自炊</div>
-        <div class="food-detail">残り食材で</div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">道の駅 許田 <span class="tag tag-food">激安</span></div>
-        <div class="food-detail">おにぎり・天ぷら・サーターアンダギーが安くて美味しい。移動がてら</div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85+%E8%A8%B1%E7%94%B0" target="_blank">Map</a>
+  <!-- 午前 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 午前</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">9:30</div><div class="tl-title">今帰仁城跡 🏯</div><div class="tl-desc">世界遺産のグスク。犬連れ散歩OK！石垣と海の絶景パノラマ</div></div>
       </div>
     </div>
-
-    <div class="food-section">
-      <div class="food-heading">🍽 ランチの選択肢</div>
-      <div class="food-card">
-        <div class="food-name">前日行けなかったお店</div>
-        <div class="food-detail">花人逢・かふーず・蒼蒼家など</div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">おんなの駅 なかゆくい市場 <span class="tag tag-food">激安</span></div>
-        <div class="food-detail">天ぷら50円〜！惣菜・フルーツ豊富。屋外で食べられる</div>
-        <span class="food-price">~500円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E3%82%93%E3%81%AA%E3%81%AE%E9%A7%85+%E3%81%AA%E3%81%8B%E3%82%86%E3%81%8F%E3%81%84%E5%B8%82%E5%A0%B4" target="_blank">Map</a>
-      </div>
-      <div class="food-card">
-        <div class="food-name">キャプテンカンガルー（名護）</div>
-        <div class="food-detail">地元で超人気のハンバーガー店。ボリューム満点</div>
-        <span class="food-price">~1,200円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%A3%E3%83%97%E3%83%86%E3%83%B3%E3%82%AB%E3%83%B3%E3%82%AC%E3%83%AB%E3%83%BC+%E5%90%8D%E8%AD%B7" target="_blank">Map</a>
+    <div class="options-heading">🏝 午前の観光</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d3-nakijin" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">今帰仁城跡 🏯</div>
+        <div class="opt-desc">世界遺産のグスク。犬連れ散歩OK！石垣と海の絶景</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">犬OK</span>
+          <span class="opt-tag tag-highlight">世界遺産</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E4%BB%8A%E5%B8%B0%E4%BB%81%E5%9F%8E%E8%B7%A1" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
     </div>
+  </div>
 
-    <div class="food-section">
-      <div class="food-heading">🍽 ディナーの選択肢（友人との最後の夜）</div>
-      <div class="food-card bbq">
-        <div class="food-name">宿でBBQ 最終夜 🔥 <span class="tag tag-dog">犬OK</span></div>
-        <div class="food-detail">残り食材を使い切り！最後の夜を庭で</div>
+  <!-- 昼 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 昼</div>
+    <div class="options-heading">🍽 ランチの選択肢</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d3-prev" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">前日行けなかったお店</div>
+        <div class="opt-desc">花人逢・かふーず・蒼蒼家など</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
       </div>
-      <div class="food-card">
-        <div class="food-name">ステーキ（名護周辺）<span class="tag tag-food">沖縄文化</span></div>
-        <div class="food-detail">沖縄はステーキ文化！テイクアウト→宿で食べるのも◎</div>
+      <div class="opt-card" data-id="d3-onnanoeki" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">おんなの駅 なかゆくい市場</div>
+        <div class="opt-desc">天ぷら50円〜！惣菜・フルーツ豊富。屋外で食べられる</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-highlight">激安</span>
+          <span class="opt-tag tag-budget">~500円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E3%82%93%E3%81%AA%E3%81%AE%E9%A7%85+%E3%81%AA%E3%81%8B%E3%82%86%E3%81%8F%E3%81%84%E5%B8%82%E5%A0%B4" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="food-card">
-        <div class="food-name">我部祖河食堂（名護）</div>
-        <div class="food-detail">沖縄そばの有名店。ソーキそばが安くてボリューミー</div>
-        <span class="food-price">~750円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%88%91%E9%83%A8%E7%A5%96%E6%B2%B3%E9%A3%9F%E5%A0%82+%E5%90%8D%E8%AD%B7" target="_blank">Map</a>
+      <div class="opt-card" data-id="d3-kangaroo" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">キャプテンカンガルー（名護）</div>
+        <div class="opt-desc">地元で超人気のハンバーガー店。ボリューム満点</div>
+        <div class="opt-tags"><span class="opt-tag tag-budget">~1,200円</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%A3%E3%83%97%E3%83%86%E3%83%B3%E3%82%AB%E3%83%B3%E3%82%AC%E3%83%AB%E3%83%BC+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 午後 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 午後</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">13:30</div><div class="tl-title">大石林山 ⛰</div><div class="tl-desc">やんばる国立公園。犬連れトレッキングOK！2億年前の奇岩と亜熱帯の森</div></div>
+        <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-title">ビーチ散歩 or カフェ休憩</div><div class="tl-desc">犬と一緒に最後の北部を満喫</div></div>
+      </div>
+    </div>
+    <div class="options-heading">🏝 午後の観光</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d3-daisekirinzan" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">大石林山 ⛰</div>
+        <div class="opt-desc">やんばる国立公園。犬連れトレッキングOK！2億年前の奇岩と亜熱帯の森</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">犬OK</span>
+          <span class="opt-tag tag-highlight">自然体験</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E7%9F%B3%E6%9E%97%E5%B1%B1+%E6%B2%96%E7%B8%84" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 夜 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌙</span> ディナー（友人との最後の夜）</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d3-bbq" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">宿でBBQ 最終夜 🔥</div>
+        <div class="opt-desc">残り食材を使い切り！最後の夜を庭で</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
+      </div>
+      <div class="opt-card" data-id="d3-steak" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">ステーキ（名護周辺）</div>
+        <div class="opt-desc">沖縄はステーキ文化！テイクアウト→宿で食べるのも◎</div>
+        <div class="opt-tags"><span class="opt-tag tag-highlight">沖縄文化</span></div>
+      </div>
+      <div class="opt-card" data-id="d3-gabusoka" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">我部祖河食堂（名護）</div>
+        <div class="opt-desc">沖縄そばの有名店。ソーキそばが安くてボリューミー</div>
+        <div class="opt-tags"><span class="opt-tag tag-budget">~750円</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E6%88%91%E9%83%A8%E7%A5%96%E6%B2%B3%E9%A3%9F%E5%A0%82+%E5%90%8D%E8%AD%B7" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===================== DAY 4 ===================== -->
-<div class="day" id="day4">
-  <div class="day-header" onclick="toggleDay('day4')">
-    <div class="day-num" style="background:#f472b6"><span class="m">5/</span><span class="d">9</span></div>
-    <div>
+<!-- ============================================================ -->
+<!--                         DAY 4                                -->
+<!-- ============================================================ -->
+<div class="day-section" id="day4">
+  <div class="day-section-header">
+    <div class="day-badge day-badge-4"><span class="dm">5/</span><span class="dd">9</span></div>
+    <div class="day-meta">
       <div class="day-title">のんびりデー &mdash; 恩納村へ</div>
       <div class="day-subtitle">金曜 / 夫婦 + 犬5頭のみ 💑🐕</div>
     </div>
   </div>
-  <div class="day-body">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">~10:00</div>
-        <div class="tl-title">Airbnb チェックアウト</div>
+
+  <!-- 朝〜午前 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">&#9728;&#65039;</span> 朝〜午前</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">~10:00</div><div class="tl-title">Airbnb チェックアウト</div></div>
+        <div class="tl-item"><div class="tl-time">10:30</div><div class="tl-title">のんびり南下 🚗</div><div class="tl-desc">途中で寄り道しながら恩納村方面へ</div></div>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">10:30</div>
-        <div class="tl-title">のんびり南下 🚗</div>
-        <div class="tl-desc">途中で寄り道しながら恩納村方面へ</div>
+    </div>
+  </div>
+
+  <!-- 昼 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 昼</div>
+    <div class="options-heading">🍽 ランチの選択肢（恩納村エリア）</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d4-enzo" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">ピッツェリア ダ エンゾ</div>
+        <div class="opt-desc">恩納村真栄田の琉球イタリアン。本格ピッツァ</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">テラス犬OK</span>
+          <span class="opt-tag tag-budget">~1,500円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%94%E3%83%83%E3%83%84%E3%82%A7%E3%83%AA%E3%82%A2%E3%83%80%E3%82%A8%E3%83%B3%E3%82%BE+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">11:30</div>
-        <div class="tl-title">恩納村エリアでランチ 🍽</div>
+      <div class="opt-card" data-id="d4-kaiholo" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">カイホロカフェ</div>
+        <div class="opt-desc">恩納村。マナーベルト着用で利用可</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">テラス犬OK</span>
+          <span class="opt-tag tag-budget">~1,200円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%82%A4%E3%83%9B%E3%83%AD%E3%82%AB%E3%83%95%E3%82%A7+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">13:00</div>
-        <div class="tl-title">ビーチ散歩 🏖 or カフェでまったり</div>
-        <div class="tl-desc">犬と一緒にのんびり過ごす</div>
+      <div class="opt-card" data-id="d4-tripcafe" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">トリップカフェオキナワ</div>
+        <div class="opt-desc">恩納村前兼久。ふわふわパンケーキ & ハンバーガー</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">テラス犬OK</span>
+          <span class="opt-tag tag-budget">~1,200円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%AA%E3%83%83%E3%83%97%E3%82%AB%E3%83%95%E3%82%A7%E3%82%AA%E3%82%AD%E3%83%8A%E3%83%AF+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">15:00</div>
-        <div class="tl-title">南国ロッジ Booya チェックイン 🌴</div>
-        <div class="tl-desc">恩納村の高台に建つペットOKロッジ。海が見える静かな丘の上</div>
-        <span class="tag tag-dog">ペットOK</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E5%9B%BD%E3%83%AD%E3%83%83%E3%82%B8Booya+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank">南国ロッジ Booya</a>
-        <br>
-        <a href="https://booya7070.wixsite.com/booya" target="_blank" style="font-size:0.8em; color:#2563eb;">公式サイト</a>
+      <div class="opt-card" data-id="d4-hareaina" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">ハレアイナ ホア</div>
+        <div class="opt-desc">犬とBBQもできる！テラス席あり</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">犬OK</span>
+          <span class="opt-tag tag-budget">~1,500円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%AC%E3%82%A2%E3%82%A4%E3%83%8A%E3%83%9B%E3%82%A2+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">午後〜夜</div>
-        <div class="tl-title">Booyaでのんびり</div>
-        <div class="tl-desc">犬とゆっくり過ごす静かな時間。バーラウンジも利用可</div>
+    </div>
+  </div>
+
+  <!-- 午後〜夜 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌙</span> 午後〜夜</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-title">ビーチ散歩 🏖 or カフェ</div><div class="tl-desc">犬と一緒にのんびり過ごす</div></div>
+        <div class="tl-item"><div class="tl-time">15:00</div><div class="tl-title">南国ロッジ Booya チェックイン 🌴</div><div class="tl-desc">恩納村の高台。海が見える静かな丘の上</div></div>
+        <div class="tl-item"><div class="tl-time">午後〜</div><div class="tl-title">Booyaでのんびり</div><div class="tl-desc">犬とゆっくり過ごす静かな時間。バーラウンジも利用可</div></div>
       </div>
     </div>
 
     <div class="accom">
+      <div class="accom-title">🌴 南国ロッジ Booya</div>
+      <div class="accom-detail">
+        恩納村の高台に建つペットOKロッジ。海が見える静かな丘の上<br>
+        <a href="https://booya7070.wixsite.com/booya" target="_blank" style="color:#2563eb;">公式サイト</a>
+        &nbsp;
+        <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E5%9B%BD%E3%83%AD%E3%83%83%E3%82%B8Booya+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" style="color:#2563eb;">📍 Map</a>
+      </div>
+    </div>
+    <div class="accom">
       <div class="accom-title">🐾 Booya ペット料金（参考）</div>
       <div class="accom-detail">
         小型犬 ¥1,000/頭（トイプー×2 + ヨーキー×1 = ¥3,000）<br>
-        大型犬 ¥2,000/頭（オーシェパ×2 = ¥4,000）※区分要確認<br>
+        大型犬 ¥2,000/頭（オウシー×2 = ¥4,000）※区分要確認<br>
         朝食 ¥380/人（翌朝利用可）+ モーニングコーヒー無料（8:00-10:30）
       </div>
     </div>
 
-    <div class="food-section">
-      <div class="food-heading">🍽 ランチの選択肢（恩納村エリア）</div>
-      <div class="food-card">
-        <div class="food-name">ピッツェリア ダ エンゾ <span class="tag tag-dog">テラス犬OK</span></div>
-        <div class="food-detail">恩納村真栄田の琉球イタリアン。本格ピッツァ</div>
-        <span class="food-price">~1,500円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%94%E3%83%83%E3%83%84%E3%82%A7%E3%83%AA%E3%82%A2%E3%83%80%E3%82%A8%E3%83%B3%E3%82%BE+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank">Map</a>
+    <div class="options-heading">🍽 ディナーの選択肢</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d4-booya-bar" onclick="toggleCard(this)">
+        <span class="opt-cat cat-chill">のんびり ☕</span>
+        <div class="opt-name">Booyaバーラウンジ</div>
+        <div class="opt-desc">宿でゆっくり。軽食&ドリンク</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">宿内</span></div>
       </div>
-      <div class="food-card">
-        <div class="food-name">カイホロカフェ <span class="tag tag-dog">テラス犬OK</span></div>
-        <div class="food-detail">恩納村。マナーベルト着用で利用可</div>
-        <span class="food-price">~1,200円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%82%A4%E3%83%9B%E3%83%AD%E3%82%AB%E3%83%95%E3%82%A7+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank">Map</a>
+      <div class="opt-card" data-id="d4-takeout" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">恩納村周辺テイクアウト</div>
+        <div class="opt-desc">宿で犬とのんびり食べる</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬OK</span></div>
       </div>
-      <div class="food-card">
-        <div class="food-name">トリップカフェオキナワ <span class="tag tag-dog">テラス犬OK</span></div>
-        <div class="food-detail">恩納村前兼久。ふわふわパンケーキ & ハンバーガー</div>
-        <span class="food-price">~1,200円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%AA%E3%83%83%E3%83%97%E3%82%AB%E3%83%95%E3%82%A7%E3%82%AA%E3%82%AD%E3%83%8A%E3%83%AF+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank">Map</a>
-      </div>
-      <div class="food-card">
-        <div class="food-name">ハレアイナ ホア <span class="tag tag-dog">犬OK</span></div>
-        <div class="food-detail">犬とBBQもできる！テラス席あり</div>
-        <span class="food-price">~1,500円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%AC%E3%82%A2%E3%82%A4%E3%83%8A%E3%83%9B%E3%82%A2+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank">Map</a>
-      </div>
-    </div>
-
-    <div class="food-section">
-      <div class="food-heading">🍽 ディナーの選択肢</div>
-      <div class="food-card">
-        <div class="food-name">Booyaバーラウンジ <span class="tag tag-dog">宿内</span></div>
-        <div class="food-detail">宿でゆっくり。軽食&ドリンク</div>
-      </div>
-      <div class="food-card takeout">
-        <div class="food-name">恩納村周辺でテイクアウト</div>
-        <div class="food-detail">宿で犬とのんびり食べる</div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">土花土花（どかどか） <span class="tag tag-spot">雰囲気◎</span></div>
-        <div class="food-detail">恩納村のカフェギャラリー。独特な空間</div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%9C%9F%E8%8A%B1%E5%9C%9F%E8%8A%B1+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank">Map</a>
+      <div class="opt-card" data-id="d4-dokadoka" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">土花土花（どかどか）</div>
+        <div class="opt-desc">恩納村のカフェギャラリー。独特な空間</div>
+        <div class="opt-tags"><span class="opt-tag tag-highlight">雰囲気◎</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E5%9C%9F%E8%8A%B1%E5%9C%9F%E8%8A%B1+%E6%81%A9%E7%B4%8D%E6%9D%91" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===================== DAY 5 ===================== -->
-<div class="day" id="day5">
-  <div class="day-header" onclick="toggleDay('day5')">
-    <div class="day-num" style="background:#64748b"><span class="m">5/</span><span class="d">10</span></div>
-    <div>
+<!-- ============================================================ -->
+<!--                         DAY 5                                -->
+<!-- ============================================================ -->
+<div class="day-section" id="day5">
+  <div class="day-section-header">
+    <div class="day-badge day-badge-5"><span class="dm">5/</span><span class="dd">10</span></div>
+    <div class="day-meta">
       <div class="day-title">最終日 &mdash; 南下して帰路</div>
       <div class="day-subtitle">土曜 / 15:35 那覇空港発</div>
     </div>
   </div>
-  <div class="day-body">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">8:00</div>
-        <div class="tl-title">Booya朝食 ☕</div>
-        <div class="tl-desc">アメリカンブレックファスト ¥380/人 + モーニングコーヒー無料</div>
+
+  <!-- 朝 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">&#9728;&#65039;</span> 朝</div>
+    <div class="sample-schedule">
+      <span class="sample-label">サンプルスケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">8:00</div><div class="tl-title">Booya朝食 ☕</div><div class="tl-desc">アメリカンブレックファスト ¥380/人 + モーニングコーヒー無料</div></div>
+        <div class="tl-item"><div class="tl-time">9:30</div><div class="tl-title">チェックアウト → 南下開始 🚗</div></div>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">9:30</div>
-        <div class="tl-title">チェックアウト → 南下開始 🚗</div>
+    </div>
+  </div>
+
+  <!-- 午前 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">🌤</span> 午前〜昼</div>
+    <div class="options-heading">🏝 途中の寄り道</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d5-american" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">アメリカンビレッジ（北谷）</div>
+        <div class="opt-desc">異国情緒のショッピングエリア。テラスカフェ多め</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">犬散歩OK</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8+%E5%8C%97%E8%B0%B7" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">10:30</div>
-        <div class="tl-title">途中の寄り道</div>
-        <div class="tl-desc">以下から選択</div>
-        <div style="margin-top:8px">
-          <div class="food-card" style="border-left-color:#22c55e">
-            <div class="food-name">アメリカンビレッジ（北谷） <span class="tag tag-dog">犬散歩OK</span></div>
-            <div class="food-detail">異国情緒のショッピングエリア。テラスカフェ多め</div>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8+%E5%8C%97%E8%B0%B7" target="_blank">Map</a>
-          </div>
-          <div class="food-card" style="border-left-color:#22c55e">
-            <div class="food-name">瀬長島ウミカジテラス <span class="tag tag-dog">屋外犬OK</span></div>
-            <div class="food-detail">空港近く。白い建物が並ぶおしゃれスポット</div>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank">Map</a>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">12:00</div>
-        <div class="tl-title">那覇エリアでランチ 🍽</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">13:30</div>
-        <div class="tl-title">OTS臨空豊崎営業所でレンタカー返却</div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=OTS%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC+%E8%87%A8%E7%A9%BA%E8%B1%8A%E5%B4%8E%E5%96%B6%E6%A5%AD%E6%89%80" target="_blank">Map</a>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">~14:15</div>
-        <div class="tl-title">送迎で那覇空港へ</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">15:35</div>
-        <div class="tl-title">那覇空港発 ✈ → セントレアへ</div>
+      <div class="opt-card" data-id="d5-umikaji" onclick="toggleCard(this)">
+        <span class="opt-cat cat-spot">観光 🏝</span>
+        <div class="opt-name">瀬長島ウミカジテラス</div>
+        <div class="opt-desc">空港近く。白い建物が並ぶおしゃれスポット</div>
+        <div class="opt-tags"><span class="opt-tag tag-dog">屋外犬OK</span></div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
     </div>
 
-    <div class="food-section">
-      <div class="food-heading">🍽 ランチの選択肢（那覇〜南部エリア）</div>
-      <div class="food-card">
-        <div class="food-name">呉屋てんぷら屋（国際通り裏） <span class="tag tag-food">1970年創業</span></div>
-        <div class="food-detail">天ぷら & サーターアンダギー 各50円！第一牧志公設市場近く。テイクアウトで食べ歩き</div>
-        <span class="food-price">~300円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%91%89%E5%B1%8B%E3%81%A6%E3%82%93%E3%81%B7%E3%82%89%E5%B1%8B+%E9%82%A3%E8%A6%87" target="_blank">Map</a>
+    <div class="options-heading">🍽 ランチの選択肢（那覇〜南部エリア）</div>
+    <div class="options-grid">
+      <div class="opt-card" data-id="d5-goya" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">呉屋てんぷら屋</div>
+        <div class="opt-desc">国際通り裏。天ぷら & サーターアンダギー 各50円！1970年創業</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-highlight">1970年創業</span>
+          <span class="opt-tag tag-budget">~300円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E5%91%89%E5%B1%8B%E3%81%A6%E3%82%93%E3%81%B7%E3%82%89%E5%B1%8B+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
       </div>
-      <div class="food-card">
-        <div class="food-name">瀬長島ウミカジテラス内 <span class="tag tag-dog">屋外犬OK</span></div>
-        <div class="food-detail">タコス・ハンバーガーなど多数の店舗。空港に近い</div>
-        <span class="food-price">~1,000円</span>
+      <div class="opt-card" data-id="d5-umikaji-food" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">ウミカジテラス内の店舗</div>
+        <div class="opt-desc">タコス・ハンバーガーなど多数。空港に近い</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-dog">屋外犬OK</span>
+          <span class="opt-tag tag-budget">~1,000円</span>
+        </div>
       </div>
-      <div class="food-card">
-        <div class="food-name">ポークたまごおにぎり本店 <span class="tag tag-food">B級グルメ</span></div>
-        <div class="food-detail">沖縄B級グルメの代表格。空港近くにも店舗あり</div>
-        <span class="food-price">~400円</span>
-        <br>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%82%AF%E3%81%9F%E3%81%BE%E3%81%94%E3%81%8A%E3%81%AB%E3%81%8E%E3%82%8A%E6%9C%AC%E5%BA%97+%E9%82%A3%E8%A6%87" target="_blank">Map</a>
+      <div class="opt-card" data-id="d5-porktamago" onclick="toggleCard(this)">
+        <span class="opt-cat cat-food">グルメ 🍽</span>
+        <div class="opt-name">ポークたまごおにぎり本店</div>
+        <div class="opt-desc">沖縄B級グルメの代表格。空港近くにも店舗あり</div>
+        <div class="opt-tags">
+          <span class="opt-tag tag-highlight">B級グルメ</span>
+          <span class="opt-tag tag-budget">~400円</span>
+        </div>
+        <a class="opt-map" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%82%AF%E3%81%9F%E3%81%BE%E3%81%94%E3%81%8A%E3%81%AB%E3%81%8E%E3%82%8A%E6%9C%AC%E5%BA%97+%E9%82%A3%E8%A6%87" target="_blank" onclick="event.stopPropagation()">📍 Map</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 午後 -->
+  <div class="time-block">
+    <div class="time-block-header"><span class="tb-icon">✈️</span> 午後（帰路）</div>
+    <div class="sample-schedule">
+      <span class="sample-label">確定スケジュール</span>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">13:30</div><div class="tl-title">OTS臨空豊崎営業所でレンタカー返却</div></div>
+        <div class="tl-item"><div class="tl-time">~14:15</div><div class="tl-title">送迎で那覇空港へ</div></div>
+        <div class="tl-item"><div class="tl-time">15:35</div><div class="tl-title">那覇空港発 ✈ → セントレアへ</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===================== INFO ===================== -->
+<!-- ============================================================ -->
+<!--                    固定情報セクション                          -->
+<!-- ============================================================ -->
 <div class="info-box">
   <h3>🐾 犬5頭の旅行 注意メモ</h3>
   <ul>
@@ -800,7 +937,7 @@
     <li>5月の沖縄は気温28〜30℃。<strong>車内放置は絶対NG</strong></li>
     <li>水・ペットシーツ・マナーベルトは多めに持参</li>
     <li>犬種: トイプードル×2 / ヨークシャーテリア×1 / オーストラリアンシェパード×2</li>
-    <li>海洋博公園は<strong>小型犬のみ</strong>OK。オーシェパは入園不可</li>
+    <li>海洋博公園は<strong>小型犬のみ</strong>OK。オウシーは入園不可</li>
     <li>レストランは事前に電話確認がベスト（特に大型犬）</li>
   </ul>
 </div>
@@ -818,8 +955,8 @@
 <div class="info-box">
   <h3>🏨 宿泊まとめ</h3>
   <ul>
-    <li><strong>5/6〜8（3泊）</strong>: <a href="https://www.airbnb.jp/rooms/48153557" target="_blank" style="color:#2563eb">Airbnb 国頭郡の一軒家</a> ― 3BR / BBQ / プール</li>
-    <li><strong>5/9（1泊）</strong>: <a href="https://booya7070.wixsite.com/booya" target="_blank" style="color:#2563eb">南国ロッジ Booya</a> ― 恩納村 / ペットOK / 朝食¥380</li>
+    <li><strong>5/6〜8（3泊）</strong>: <a href="https://www.airbnb.jp/rooms/48153557" target="_blank">Airbnb 国頭郡の一軒家</a> &mdash; 3BR / BBQ / プール</li>
+    <li><strong>5/9（1泊）</strong>: <a href="https://booya7070.wixsite.com/booya" target="_blank">南国ロッジ Booya</a> &mdash; 恩納村 / ペットOK / 朝食¥380</li>
   </ul>
 </div>
 
@@ -829,10 +966,98 @@
 
 </div><!-- /container -->
 
+<!-- ===== SELECTION BAR ===== -->
+<div class="selection-bar" id="selectionBar">
+  <div class="sel-count">✓ <span id="selCount">0</span> 件選択中</div>
+  <button class="sel-reset" onclick="resetAll()">リセット</button>
+</div>
+
 <script>
-function toggleDay(id) {
-  document.getElementById(id).classList.toggle('collapsed');
+// --- localStorage selection ---
+const STORAGE_KEY = 'okinawa-trip-selected';
+
+function getSelected() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+  catch { return []; }
 }
+
+function saveSelected(arr) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+function toggleCard(el) {
+  const id = el.dataset.id;
+  if (!id) return;
+  let sel = getSelected();
+  if (sel.includes(id)) {
+    sel = sel.filter(s => s !== id);
+    el.classList.remove('selected');
+  } else {
+    sel.push(id);
+    el.classList.add('selected');
+  }
+  saveSelected(sel);
+  updateBar();
+}
+
+function resetAll() {
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('.opt-card.selected').forEach(c => c.classList.remove('selected'));
+  updateBar();
+}
+
+function updateBar() {
+  const sel = getSelected();
+  const bar = document.getElementById('selectionBar');
+  const count = document.getElementById('selCount');
+  count.textContent = sel.length;
+  bar.classList.toggle('visible', sel.length > 0);
+}
+
+// restore on load
+function restoreSelections() {
+  const sel = getSelected();
+  sel.forEach(id => {
+    const el = document.querySelector(`.opt-card[data-id="${id}"]`);
+    if (el) el.classList.add('selected');
+  });
+  updateBar();
+}
+
+// --- Tab scrolling & Intersection Observer ---
+function scrollToDay(n) {
+  const el = document.getElementById('day' + n);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setupObserver() {
+  const sections = document.querySelectorAll('.day-section');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const dayNum = id.replace('day', '');
+        tabs.forEach(t => t.classList.remove('active'));
+        const activeTab = document.querySelector(`.tab-btn[data-day="${dayNum}"]`);
+        if (activeTab) {
+          activeTab.classList.add('active');
+          activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, {
+    rootMargin: '-80px 0px -60% 0px',
+    threshold: 0
+  });
+  sections.forEach(s => observer.observe(s));
+}
+
+// --- Init ---
+document.addEventListener('DOMContentLoaded', () => {
+  restoreSelections();
+  setupObserver();
+});
 </script>
 
 </body>
